@@ -14,16 +14,13 @@ markdown    : kramdown
 ## Opportunity Index
 
 
+
 ### Census data for neighborhoods
 
-For 'neighborhood' data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the [acs.R package](http://cran.r-project.org/web/packages/acs/index.html) to download census data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.
 
-To keep each of the variables in the same 'direction' (more homeownership is 'good,' while more poverty is 'bad'), I converted the public assistance, poverty, unemployment and vacancy to the inverse percentage (i.e. 1 - rate). For the commute times, I multiplied by (-1) so that longer commute times are lower values. 
 
-Below are summary stats for the census data components of the index:
-
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue May 20 16:52:57 2014 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Wed May 21 12:05:44 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH>    college </TH> <TH> publicassistance </TH> <TH>    poverty </TH> <TH>  unemployment </TH> <TH> owneroccupied </TH> <TH>  commutetime </TH> <TH>    vacancy </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Min.   :0.142   </TD> <TD> Min.   :0.202   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :0.615   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :-45.34   </TD> <TD> Min.   :0.000   </TD> </TR>
@@ -38,15 +35,7 @@ Below are summary stats for the census data components of the index:
 
 ### Town data for jobs and test scores
 
-The remaining variables - math and reading test scores and economic climate - aren't publicly available at the neighborhood level. 
-
-Math and reading scores are reported by the State Department of Education [at the school and district level](http://www.ctreports.com/). Since many children do not attend neighborhood schools, even if data were readily available it may  not accurately represent opportunity in a particular neighborhood. As a proxy, we use the average test scores for the school district of the town. Average test scores take into account the performance of all students, not just those crossing a particular threshold. 
-
-A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Scores for regional school districts are reported for each town in the region. Cornwall and Union did not have data for any of the past 7 years. (The index also does not specify the grade to use, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator.)
-
-'Economic climate' was defined for the Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. 
-
-As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) and you can see this in the summary stats below (the average change is 1%, but some towns have up to 86% change). 
+ 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 <!-- Tue May 20 16:53:00 2014 -->
