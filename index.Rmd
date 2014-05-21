@@ -114,7 +114,7 @@ print(xtable(summary(oppdata[2:8])), type = "html")
 
 ### Town data for jobs and test scores
 
- 
+
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
 #Load the tract mapping from UConn
@@ -177,7 +177,7 @@ ggplot(data = melt(oppdata)) +
   facet_wrap(~ variable, ncol = 2, scales = "free_y")
 ```
 
-To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and vacancy are less similar. 
+
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 15, fig.width = 12}
 #Merge with data
@@ -250,7 +250,7 @@ ggplot(data = choropleth, aes(long, lat, group = group)) +
   theme_minimal(base_size = 14)
 ```
 
-This map reflects fewer areas of 'very low' opportunity, but more areas of 'low' and 'moderate' opportunity. Another way to see this is to plot the distribution of the index values for the tracts, including the breakpoints. The chart below shows the breakpoints using the quintiles. (Again, the overall distribution is skewed positive.)
+
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3}
 breaks <- classIntervals(oppdata$index, n=5, style="quantile")
@@ -270,7 +270,6 @@ ggplot(data = oppdata) +
   geom_vline(xintercept = breaks$brks)
 ```
 
-Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
 ### What is driving the Opportunity Index? 
 
@@ -283,13 +282,13 @@ x <- subset(oppdata[3:12], commutetime != "NA" &
 print(xtable(round(cor(x),2)), type = "html")
 ```
 
-A scatterplot matrix shows the same visually - job growth and (to a lesser extent) commute time have little obvious relationship with the other variables. 
+ 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 plot(oppdata[3:12])
 ```
 
-A principal components analysis shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the index  (first bar in the graph, first column in the table). 
+
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
 pca1 = prcomp(x, scale. = T)

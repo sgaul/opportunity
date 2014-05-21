@@ -35,7 +35,7 @@ markdown    : kramdown
 
 ### Town data for jobs and test scores
 
- 
+
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 <!-- Tue May 20 16:53:00 2014 -->
@@ -63,7 +63,7 @@ markdown    : kramdown
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
 
-To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and vacancy are less similar. 
+
 
 ![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
 
@@ -77,7 +77,7 @@ To see this visually, we can map each of the variables for the state. Several va
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
 
-This map reflects fewer areas of 'very low' opportunity, but more areas of 'low' and 'moderate' opportunity. Another way to see this is to plot the distribution of the index values for the tracts, including the breakpoints. The chart below shows the breakpoints using the quintiles. (Again, the overall distribution is skewed positive.)
+
 
 ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
@@ -87,7 +87,6 @@ And this chart shows the breakpoints using the natural breaks method.
 ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
 
-Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
 ### What is driving the Opportunity Index? 
 
@@ -109,12 +108,12 @@ Using quintiles means that roughly 20 percent of the population will always live
    </TABLE>
 
 
-A scatterplot matrix shows the same visually - job growth and (to a lesser extent) commute time have little obvious relationship with the other variables. 
+ 
 
 ![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
 
 
-A principal components analysis shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the index  (first bar in the graph, first column in the table). 
+
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 <!-- Wed May 21 11:12:23 2014 -->
