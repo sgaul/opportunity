@@ -8,6 +8,7 @@ highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 ext_widgets : {rCharts: ["libraries/nvd3"]} 
 mode        : selfcontained # {standalone, draft}
+markdown    : kramdown
 ---
 
 ## Opportunity Index
