@@ -72,7 +72,6 @@ To see this visually, we can map each of the variables for the state. Several va
 ![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
 
 
-The next step is to calculate the opportunity index from the z-scores of the individual variables. Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. 
 
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
