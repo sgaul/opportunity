@@ -19,7 +19,7 @@ markdown    : kramdown
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed May 21 12:05:44 2014 -->
+<!-- Wed May 21 15:31:37 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH>    college </TH> <TH> publicassistance </TH> <TH>    poverty </TH> <TH>  unemployment </TH> <TH> owneroccupied </TH> <TH>  commutetime </TH> <TH>    vacancy </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Min.   :0.142   </TD> <TD> Min.   :0.202   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :0.615   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :-45.34   </TD> <TD> Min.   :0.000   </TD> </TR>
@@ -115,7 +115,7 @@ And this chart shows the breakpoints using the natural breaks method.
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed May 21 11:12:23 2014 -->
+<!-- Wed May 21 13:49:46 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> PC1 </TH> <TH> PC2 </TH> <TH> PC3 </TH> <TH> PC4 </TH> <TH> PC5 </TH> <TH> PC6 </TH> <TH> PC7 </TH> <TH> PC8 </TH> <TH> PC9 </TH> <TH> PC10 </TH>  </TR>
   <TR> <TD align="right"> Standard deviation </TD> <TD align="right"> 2.3721 </TD> <TD align="right"> 1.0697 </TD> <TD align="right"> 0.9723 </TD> <TD align="right"> 0.8904 </TD> <TD align="right"> 0.7957 </TD> <TD align="right"> 0.5817 </TD> <TD align="right"> 0.4936 </TD> <TD align="right"> 0.3927 </TD> <TD align="right"> 0.2927 </TD> <TD align="right"> 0.1887 </TD> </TR>

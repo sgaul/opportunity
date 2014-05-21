@@ -69,7 +69,7 @@ B23025.rate = divide.acs(numerator=B23025[,5],denominator=B23025[,2])
 B23025.tract = data.frame(geo=geography(B23025)[,1],
                               unemployment= 1 - as.numeric(estimate(B23025.rate)))
 
-#Home ownership rate - % of owner-occupied homes in housing stock
+#Home ownership rate - percent of owner-occupied homes in housing stock
 B25008 = acs.fetch(geography = ct.tracts, table.number = "B25008", col.names = "pretty", endyear = 2012)
 
 B25008.rate = divide.acs(numerator=B25008[,2],denominator=B25008[,1])
@@ -77,9 +77,8 @@ B25008.rate = divide.acs(numerator=B25008[,2],denominator=B25008[,1])
 B25008.tract = data.frame(geo=geography(B25008)[[1]],
                           owneroccupied= as.numeric(estimate(B25008.rate)))
 
-#Mean commute time, method here: http://quickfacts.census.gov/qfd/meta/long_LFE305212.htm
+#Mean commute time
 B08013 = acs.fetch(geography = ct.tracts, table.number = "B08013", col.names = "pretty", endyear = 2012)
-#B08135 = acs.fetch(geography = ct.tracts, table.number = "B08135", col.names = "pretty", endyear = 2012)
 B99084 = acs.fetch(geography = ct.tracts, table.number = "B99084", col.names = "pretty", endyear = 2012)
 
 B08013.rate = divide.acs(numerator=B08013[,1],denominator=B99084[,2])
@@ -194,7 +193,6 @@ ggplot(data = choropleth, aes(long, lat, group = group)) +
   scale_y_continuous(breaks = NULL) +
   labs(x = NULL, y = NULL) + 
   coord_equal() +
-#  geom_polygon(data = CTTracts, colour = "grey", alpha = 0.1, fill = NA) +
   scale_fill_brewer(palette = "Purples", name = "Z-scores") +
   theme_minimal() + 
   facet_wrap(~ variable, ncol = 2)
@@ -221,7 +219,6 @@ ggplot(data = choropleth, aes(long, lat, group = group)) +
   scale_y_continuous(breaks = NULL) +
   labs(x = NULL, y = NULL) + 
   coord_equal() +
-#  geom_polygon(data = CTTracts, colour = "grey", alpha = 0.1, fill = NA) +
   scale_fill_brewer(palette = "Purples", name = "Opportunty index\n(Z-scores - quintiles)") +
   theme_minimal(base_size = 14)
 ```
@@ -244,7 +241,6 @@ ggplot(data = choropleth, aes(long, lat, group = group)) +
   scale_y_continuous(breaks = NULL) +
   labs(x = NULL, y = NULL) + 
   coord_equal() +
-#  geom_polygon(data = CTTracts, colour = "grey", alpha = 0.1, fill = NA) +
   scale_fill_brewer(palette = "Purples", name = "Opportunity index\n(Z-scores, Jenks)") +
   theme_minimal(base_size = 14)
 ```
@@ -293,7 +289,6 @@ plot(oppdata[3:12])
 pca1 = prcomp(x, scale. = T)
 print(xtable(summary(pca1)), type = "html")
 plot(prcomp(x, scale = T))
-#print(pca1$rotation[,1])
 ```
 
 
@@ -311,7 +306,6 @@ ggplot(data = subset(oppdata, poverty > -6), aes(y = index, x = poverty)) +
   geom_point() + 
   geom_smooth(method = lm) + 
   labs(y = "Opportunity Index", x = "Poverty z-scores")
-#summary(lm(index ~ publicassistance, data = oppdata))
 ```
 
 
