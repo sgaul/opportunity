@@ -51,9 +51,9 @@ Math and reading scores are reported by the State Department of Education [at th
 
 A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Scores for regional school districts are reported for each town in the region. Cornwall and Union did not have data for any of the past 7 years. (The index also does not specify the grade to use, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator.)
 
-'Economic climate' was defined for the Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/descr_popup.asp?intMessage=4) (QCEW) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. 
+'Economic climate' was defined for the Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. 
 
-As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) and you can see this in the summary stats below (the average change is +1%, but some towns have up to +86% change). 
+As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) and you can see this in the summary stats below (the average change is 1%, but some towns have up to 86% change). 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 <!-- Tue May 20 16:53:00 2014 -->
@@ -82,7 +82,7 @@ If the data are not normally distributed - if, for instance, they are skewed or 
 
 This matters since the opportunity index is calculated using the average z-scores across all of the variables. If the variables have different distributions, then the z-scores will have different ranges and the z-scores won't have the same interpretation or influence on the final index values. 
 
-The charts below show the standardized results for each variable - they report the z-scores between {-3,+3} on each variable. You can see that variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables. 
+The charts below show the standardized results for each variable - they report the z-scores between -/+3 standard deviations for each variable. You can see that variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables. 
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
@@ -97,7 +97,7 @@ The next step is to calculate the opportunity index from the z-scores of the ind
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
 
-Another way of coloring the map would be to use [Jenks' 'natural breaks'](http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification) method which looks for natural divisions in the data. The map below uses this coloring method for the same data.
+Another way of coloring the map would be to use [Jenks natural breaks](http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification) method which looks for natural divisions in the data. The map below uses this coloring method for the same data.
 
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
@@ -114,9 +114,9 @@ And this chart shows the breakpoints using the natural breaks method.
 
 Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
-## What is driving the Opportunity Index? 
+### What is driving the Opportunity Index? 
 
-With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The OECD guide to composite indicators notes that using z-scores means that "[i]ndicators with extreme values thus have a greater effect on the composite indicator." That can be an issue in a state with a high degree of inequality and concentration of poverty. 
+With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The OECD guide to composite indicators notes that using z-scores means that "indicators with extreme values thus have a greater effect on the composite indicator." That can be an issue in a state with a high degree of inequality and concentration of poverty. 
 
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
@@ -142,7 +142,7 @@ A scatterplot matrix shows the same visually - job growth and (to a lesser exten
 ![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
 
 
-A principal components analysis shows that the first principal component dominates the results - explaining 56% of the overall variance in the index  (first bar in the graph, first column in the table). 
+A principal components analysis shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the index  (first bar in the graph, first column in the table). 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 <!-- Wed May 21 11:12:23 2014 -->
@@ -175,3 +175,4 @@ Overall:
 * The index is driven largely by poverty and variables like public assistance that are strongly correlated with poverty. 
 * Different ways to display the data will yield different conclusions about the landscape of opportunity in Connecticut. 
 * Job growth (economic climate) has the least influence on the index as it is uncorrelated with the other variables. 
+

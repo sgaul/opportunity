@@ -73,9 +73,9 @@
 
 <p>A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Scores for regional school districts are reported for each town in the region. Cornwall and Union did not have data for any of the past 7 years. (The index also does not specify the grade to use, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator.)</p>
 
-<p>&#39;Economic climate&#39; was defined for the Opportunity Index as &#39;the change in jobs within 5 miles from 2005 to 2008,&#39; using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the <a href="http://www1.ctdol.state.ct.us/lmi/descr_popup.asp?intMessage=4">Quarterly Census of Earnings and Wages</a> (QCEW) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. </p>
+<p>&#39;Economic climate&#39; was defined for the Opportunity Index as &#39;the change in jobs within 5 miles from 2005 to 2008,&#39; using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the <a href="http://www1.ctdol.state.ct.us/lmi/">Quarterly Census of Earnings and Wages</a> series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. </p>
 
-<p>As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) and you can see this in the summary stats below (the average change is +1%, but some towns have up to +86% change). </p>
+<p>As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) and you can see this in the summary stats below (the average change is 1%, but some towns have up to 86% change). </p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
@@ -104,7 +104,7 @@
 
 <p>This matters since the opportunity index is calculated using the average z-scores across all of the variables. If the variables have different distributions, then the z-scores will have different ranges and the z-scores won&#39;t have the same interpretation or influence on the final index values. </p>
 
-<p>The charts below show the standardized results for each variable - they report the z-scores between {-3,+3} on each variable. You can see that variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables. </p>
+<p>The charts below show the standardized results for each variable - they report the z-scores between -/+3 standard deviations for each variable. You can see that variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables. </p>
 
 <p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
@@ -116,7 +116,7 @@
 
 <p><img src="assets/fig/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
-<p>Another way of coloring the map would be to use <a href="http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification">Jenks&#39; &#39;natural breaks&#39;</a> method which looks for natural divisions in the data. The map below uses this coloring method for the same data.</p>
+<p>Another way of coloring the map would be to use <a href="http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification">Jenks natural breaks</a> method which looks for natural divisions in the data. The map below uses this coloring method for the same data.</p>
 
 <p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
@@ -130,9 +130,9 @@
 
 <p>Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. </p>
 
-<h2>What is driving the Opportunity Index?</h2>
+<h3>What is driving the Opportunity Index?</h3>
 
-<p>With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The OECD guide to composite indicators notes that using z-scores means that &quot;[i]ndicators with extreme values thus have a greater effect on the composite indicator.&quot; That can be an issue in a state with a high degree of inequality and concentration of poverty. </p>
+<p>With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The OECD guide to composite indicators notes that using z-scores means that &quot;indicators with extreme values thus have a greater effect on the composite indicator.&quot; That can be an issue in a state with a high degree of inequality and concentration of poverty. </p>
 
 <p>As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. </p>
 
@@ -158,7 +158,7 @@
 
 <p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
 
-<p>A principal components analysis shows that the first principal component dominates the results - explaining 56% of the overall variance in the index  (first bar in the graph, first column in the table). </p>
+<p>A principal components analysis shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the index  (first bar in the graph, first column in the table). </p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 
