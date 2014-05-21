@@ -6,7 +6,6 @@ job         : Community Indicators Project
 framework   : minimal        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-ext_widgets : {rCharts: ["libraries/nvd3"]} 
 mode        : selfcontained # {standalone, draft}
 markdown    : kramdown
 ---
@@ -88,7 +87,7 @@ And this chart shows the breakpoints using the natural breaks method.
 
 
 
-### What is driving the Opportunity Index? 
+### What is driving the Opportunity Index 
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->

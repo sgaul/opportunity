@@ -6,7 +6,6 @@ job         : Community Indicators Project
 framework   : minimal        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-ext_widgets : {rCharts: ["libraries/nvd3"]} 
 mode        : selfcontained # {standalone, draft}
 markdown    : kramdown
 ---
@@ -271,7 +270,7 @@ ggplot(data = oppdata) +
 ```
 
 
-### What is driving the Opportunity Index? 
+### What is driving the Opportunity Index 
 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}

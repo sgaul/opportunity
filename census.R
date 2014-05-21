@@ -126,3 +126,15 @@ plot(prcomp(x, scale = T))
 
 #write.csv(oppdata, "oppdata.csv", row.names = F)
 
+#Extra credit
+oned <- read.csv('OneDIndexData.csv')
+
+plot(oned[4:8])
+round(cor(oned[4:8]),2)
+
+pc_oned <- prcomp(oned[4:8], scale = T)
+
+summary(pc_oned)
+plot(pc_oned)
+as.data.frame(pc_oned$x)
+summary(lm(OneD.Index ~ Economic.Prosperity.Index, data = oned))
