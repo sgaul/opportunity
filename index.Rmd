@@ -232,6 +232,7 @@ The next step is to calculate the opportunity index from the z-scores of the ind
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 12}
 #Merge with data
 oppdata$index = rowMeans(oppdata[3:12], na.rm = T)
+write.csv(oppdata, "oppdata.csv", row.names = F)
 
 library(classInt)
 choropleth=merge(CTTracts, oppdata[c("geo","index")], 
