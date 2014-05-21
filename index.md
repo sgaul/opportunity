@@ -149,10 +149,5 @@ Another way to look at this is to see how well these variables predict the final
 ![plot of chunk unnamed-chunk-14](assets/fig/unnamed-chunk-14.png) 
 
 
-Overall: 
-* We can re-calculate the opportunity index using Census data and state data for towns on test scores and jobs, making some concessions for data availability on the latter variables.
-* Timing is a consideration - the Census data covers a different time horizon than the other variables. (But the original index used 2000 census data and jobs data for 2005 - 2008, so this may be less of a concern.)
-* The index is driven largely by poverty and variables like public assistance that are strongly correlated with poverty. 
-* Different ways to display the data will yield different conclusions about the landscape of opportunity in Connecticut. 
-* Job growth (economic climate) has the least influence on the index as it is uncorrelated with the other variables. 
+
 
