@@ -66,10 +66,6 @@
 
 <h3>Calculating z-scores for the index</h3>
 
-<p>The Opportunity Index uses z-scores to scale the variables and calculate the index. This is important because the interpretation of the z-scores depends on how the data are distributed. If data are distributed normally (&#39;bell-curve&#39; style), the z-scores tell us roughly how much of the data is below or above a certain z-score. You can then also compare z-scores for different bell-curve-shaped data sets - the z-scores mean the same thing if the underlying distributions have the same shape. </p>
-
-<p>The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped though. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. </p>
-
 <p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
 <p>If the data are not normally distributed - if, for instance, they are skewed or there are multiple modes in the data - then the z-scores can be harder to interpret. And it&#39;s also harder to compare the z-scores across variables - a z-score of 2 for poverty doesn&#39;t mean the same thing as a z-score of 2 for commute time if they don&#39;t have the same-shaped distribution. </p>
@@ -87,8 +83,6 @@
 <p>The next step is to calculate the opportunity index from the z-scores of the individual variables. Even this has some choices involved - the Kirwan Institute mapping uses <a href="http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf">quintiles to color the maps</a>, which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. </p>
 
 <p><img src="assets/fig/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
-
-<p>Another way of coloring the map would be to use <a href="http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification">Jenks natural breaks</a> method which looks for natural divisions in the data. The map below uses this coloring method for the same data.</p>
 
 <p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 

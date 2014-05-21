@@ -53,9 +53,7 @@ markdown    : kramdown
 
 ### Calculating z-scores for the index
 
-The Opportunity Index uses z-scores to scale the variables and calculate the index. This is important because the interpretation of the z-scores depends on how the data are distributed. If data are distributed normally ('bell-curve' style), the z-scores tell us roughly how much of the data is below or above a certain z-score. You can then also compare z-scores for different bell-curve-shaped data sets - the z-scores mean the same thing if the underlying distributions have the same shape. 
 
-The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped though. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
 
@@ -79,7 +77,7 @@ The next step is to calculate the opportunity index from the z-scores of the ind
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
 
-Another way of coloring the map would be to use [Jenks natural breaks](http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification) method which looks for natural divisions in the data. The map below uses this coloring method for the same data.
+
 
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
