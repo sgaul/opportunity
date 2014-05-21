@@ -96,9 +96,6 @@ Using quintiles means that roughly 20 percent of the population will always live
 
 ### What is driving the Opportunity Index? 
 
-With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that 'indicators with extreme values thus have a greater effect on the composite indicator.' That can be an issue in a state with a high degree of inequality and concentration of poverty. 
-
-As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
 <!-- Wed May 21 11:12:22 2014 -->
@@ -135,16 +132,12 @@ A principal components analysis shows that the first principal component dominat
 ![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
 
 
-We can look at the weights for each of the variables in the first principal component in the chart below. This shows that job growth has little influence on the first component (weight close to 0), while commute time offsets some of the other variables (positive weight). Poverty, public assistance and owner-occupied housing have the strongest weights. 
+
 
 ![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13.png) 
 
 
-In other words, since much of the variance is explained by the first principal components and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
 
-Not surprisingly, many of these variables also have skewed distributions for Connecticut, and hence a more extreme range of z-scores to factor into the overall index.
-
-Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.78 - meaning that the variation in poverty alone explains 78% of the variation in opportunity. 
 
 ![plot of chunk unnamed-chunk-14](assets/fig/unnamed-chunk-14.png) 
 

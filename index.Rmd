@@ -279,9 +279,6 @@ Using quintiles means that roughly 20 percent of the population will always live
 
 ### What is driving the Opportunity Index? 
 
-With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that 'indicators with extreme values thus have a greater effect on the composite indicator.' That can be an issue in a state with a high degree of inequality and concentration of poverty. 
-
-As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
 x <- subset(oppdata[3:12], commutetime != "NA" & 
@@ -306,7 +303,7 @@ plot(prcomp(x, scale = T))
 #print(pca1$rotation[,1])
 ```
 
-We can look at the weights for each of the variables in the first principal component in the chart below. This shows that job growth has little influence on the first component (weight close to 0), while commute time offsets some of the other variables (positive weight). Poverty, public assistance and owner-occupied housing have the strongest weights. 
+
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4}
 rotation <- data.frame(pca1$rotation[,1])
@@ -314,11 +311,7 @@ qplot(data = rotation, x = pca1.rotation...1., y = row.names(rotation)) +
   labs(x = "Weight in first principal component", y = NULL)
 ```
 
-In other words, since much of the variance is explained by the first principal components and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
 
-Not surprisingly, many of these variables also have skewed distributions for Connecticut, and hence a more extreme range of z-scores to factor into the overall index.
-
-Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.78 - meaning that the variation in poverty alone explains 78% of the variation in opportunity. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4}
 ggplot(data = subset(oppdata, poverty > -6), aes(y = index, x = poverty)) + 
