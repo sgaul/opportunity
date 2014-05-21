@@ -58,11 +58,7 @@ markdown    : kramdown
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
 
 
-If the data are not normally distributed - if, for instance, they are skewed or there are multiple modes in the data - then the z-scores can be harder to interpret. And it's also harder to compare the z-scores across variables - a z-score of 2 for poverty doesn't mean the same thing as a z-score of 2 for commute time if they don't have the same-shaped distribution. 
 
-This matters since the opportunity index is calculated using the average z-scores across all of the variables. If the variables have different distributions, then the z-scores will have different ranges and the z-scores won't have the same interpretation or influence on the final index values. 
-
-The charts below show the standardized results for each variable - they report the z-scores between -/+3 standard deviations for each variable. You can see that variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables. 
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
