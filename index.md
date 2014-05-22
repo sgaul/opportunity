@@ -33,6 +33,14 @@ Below are summary stats for the census data components of the index:
 
 
 ```
+## Error: missing value where TRUE/FALSE needed
+```
+
+```
+## Error: missing value where TRUE/FALSE needed
+```
+
+```
 ##     college      publicassistance    poverty       unemployment  
 ##  Min.   :0.142   Min.   :0.202    Min.   :0.000   Min.   :0.615  
 ##  1st Qu.:0.517   1st Qu.:0.849    1st Qu.:0.860   1st Qu.:0.890  
