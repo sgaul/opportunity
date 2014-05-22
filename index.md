@@ -29,51 +29,65 @@ To keep each of the variables in the same 'direction' (more homeownership is 'go
 
 Below are summary stats for the census data components of the index:
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed May 21 15:31:37 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH>    college </TH> <TH> publicassistance </TH> <TH>    poverty </TH> <TH>  unemployment </TH> <TH> owneroccupied </TH> <TH>  commutetime </TH> <TH>    vacancy </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Min.   :0.142   </TD> <TD> Min.   :0.202   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :0.615   </TD> <TD> Min.   :0.000   </TD> <TD> Min.   :-45.34   </TD> <TD> Min.   :0.000   </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> 1st Qu.:0.517   </TD> <TD> 1st Qu.:0.849   </TD> <TD> 1st Qu.:0.860   </TD> <TD> 1st Qu.:0.890   </TD> <TD> 1st Qu.:0.527   </TD> <TD> 1st Qu.:-27.44   </TD> <TD> 1st Qu.:0.885   </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Median :0.666   </TD> <TD> Median :0.944   </TD> <TD> Median :0.936   </TD> <TD> Median :0.926   </TD> <TD> Median :0.793   </TD> <TD> Median :-23.95   </TD> <TD> Median :0.930   </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Mean   :0.646   </TD> <TD> Mean   :0.884   </TD> <TD> Mean   :0.890   </TD> <TD> Mean   :0.910   </TD> <TD> Mean   :0.692   </TD> <TD> Mean   :-24.77   </TD> <TD> Mean   :0.911   </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> 3rd Qu.:0.780   </TD> <TD> 3rd Qu.:0.974   </TD> <TD> 3rd Qu.:0.967   </TD> <TD> 3rd Qu.:0.945   </TD> <TD> 3rd Qu.:0.907   </TD> <TD> 3rd Qu.:-21.59   </TD> <TD> 3rd Qu.:0.959   </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Max.   :1.000   </TD> <TD> Max.   :1.000   </TD> <TD> Max.   :1.000   </TD> <TD> Max.   :1.000   </TD> <TD> Max.   :1.000   </TD> <TD> Max.   : -8.41   </TD> <TD> Max.   :1.000   </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> NA's   :5   </TD> <TD> NA's   :7   </TD> <TD> NA's   :7   </TD> <TD> NA's   :7   </TD> <TD> NA's   :7   </TD> <TD> NA's   :8   </TD> <TD> NA's   :6   </TD> </TR>
-   </TABLE>
+
+```
+##     college      publicassistance    poverty       unemployment  
+##  Min.   :0.142   Min.   :0.202    Min.   :0.000   Min.   :0.615  
+##  1st Qu.:0.517   1st Qu.:0.849    1st Qu.:0.860   1st Qu.:0.890  
+##  Median :0.666   Median :0.944    Median :0.936   Median :0.926  
+##  Mean   :0.646   Mean   :0.884    Mean   :0.890   Mean   :0.910  
+##  3rd Qu.:0.780   3rd Qu.:0.974    3rd Qu.:0.967   3rd Qu.:0.945  
+##  Max.   :1.000   Max.   :1.000    Max.   :1.000   Max.   :1.000  
+##  NA's   :5       NA's   :7        NA's   :7       NA's   :7      
+##  owneroccupied    commutetime        vacancy     
+##  Min.   :0.000   Min.   :-45.34   Min.   :0.000  
+##  1st Qu.:0.527   1st Qu.:-27.44   1st Qu.:0.885  
+##  Median :0.793   Median :-23.95   Median :0.930  
+##  Mean   :0.692   Mean   :-24.77   Mean   :0.911  
+##  3rd Qu.:0.907   3rd Qu.:-21.59   3rd Qu.:0.959  
+##  Max.   :1.000   Max.   : -8.41   Max.   :1.000  
+##  NA's   :7       NA's   :8        NA's   :6
+```
 
 
 The remaining variables - math and reading test scores and economic climate - aren't publicly available at the neighborhood level. 
 
 ### Town data for jobs and test scores
 
-Math and reading scores are reported by the State Department of Education [at the school and district level](http://www.ctreports.com/). Since many children do not attend neighborhood schools, even if data were readily available it may  not accurately represent opportunity in a particular neighborhood. As a proxy, we use the average test scores for the school district of the town. Average test scores take into account the performance of all students, not just those crossing a particular threshold. 
+Math and reading scores are reported by the State Department of Education [at the school and district level](http://www.ctreports.com/). Since many children do not attend neighborhood schools, even if data were readily available it may  not accurately represent opportunity in a particular neighborhood. As a proxy, I used the average test scores for the school district of the town. Average test scores take into account the performance of all students, not just those crossing a particular threshold. The index also does not specify the grade level, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator. 
 
-A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Scores for regional school districts are reported for each town in the region. Cornwall and Union did not have data for any of the past 7 years. (The index also does not specify the grade to use, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator.)
+A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Cornwall and Union did not have data for any of the past seven years. Scores for regional school districts are reported for each town in the region. 
 
 'Economic climate' was defined for the Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. 
 
 As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) which you can see in the summary stats below.
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue May 20 16:53:00 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH>   jobchange </TH> <TH> Total.Mathematics.Avg.Scale.Score </TH> <TH> Total.Reading.Average.Scale.Score </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Min.   :-0.367   </TD> <TD> Min.   :212   </TD> <TD> Min.   :208   </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> 1st Qu.:-0.011   </TD> <TD> 1st Qu.:239   </TD> <TD> 1st Qu.:228   </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Median : 0.013   </TD> <TD> Median :255   </TD> <TD> Median :240   </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Mean   : 0.012   </TD> <TD> Mean   :254   </TD> <TD> Mean   :241   </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> 3rd Qu.: 0.034   </TD> <TD> 3rd Qu.:271   </TD> <TD> 3rd Qu.:257   </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Max.   : 0.858   </TD> <TD> Max.   :298   </TD> <TD> Max.   :279   </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> NA's   :6   </TD> <TD> NA's   :7   </TD> <TD> NA's   :8   </TD> </TR>
-   </TABLE>
+
+```
+##    jobchange      Total.Mathematics.Avg.Scale.Score
+##  Min.   :-0.367   Min.   :212                      
+##  1st Qu.:-0.011   1st Qu.:239                      
+##  Median : 0.013   Median :255                      
+##  Mean   : 0.012   Mean   :254                      
+##  3rd Qu.: 0.034   3rd Qu.:271                      
+##  Max.   : 0.858   Max.   :298                      
+##  NA's   :6        NA's   :7                        
+##  Total.Reading.Average.Scale.Score
+##  Min.   :208                      
+##  1st Qu.:228                      
+##  Median :240                      
+##  Mean   :241                      
+##  3rd Qu.:257                      
+##  Max.   :279                      
+##  NA's   :8
+```
 
 
 ### Calculating z-scores for the index
 
 The Opportunity Index uses z-scores to scale the variables and calculate the index. This is important because the interpretation of the z-scores depends on how the data are distributed. If data are distributed normally ('bell-curve' style), the z-scores tell us roughly how much of the data is below or above a certain z-score. You can then also compare z-scores for different bell-curve-shaped data sets - the z-scores mean the same thing if the underlying distributions have the same shape. 
 
-The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped though. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
+The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
 
@@ -87,12 +101,14 @@ The charts below show the standardized results for each variable - they report t
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
 
-To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and vacancy are less similar. 
+To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. 
 
 ![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
 
 
-The next step is to calculate the opportunity index from the z-scores of the individual variables. Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. 
+The next step is to calculate the opportunity index as the average of the z-scores of the individual variables. 
+
+Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. 
 
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
@@ -112,29 +128,72 @@ And this chart shows the breakpoints using the natural breaks method.
 ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
 
-Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
+Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the natural breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
-### What is driving the Opportunity Index 
+### What is driving the Opportunity Index?
 
 With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that 'indicators with extreme values thus have a greater effect on the composite indicator.' That can be an issue in a state with a high degree of inequality and concentration of poverty. 
 
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed May 21 11:12:22 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> college </TH> <TH> publicassistance </TH> <TH> poverty </TH> <TH> unemployment </TH> <TH> owneroccupied </TH> <TH> commutetime </TH> <TH> vacancy </TH> <TH> jobchange </TH> <TH> Total.Mathematics.Avg.Scale.Score </TH> <TH> Total.Reading.Average.Scale.Score </TH>  </TR>
-  <TR> <TD align="right"> college </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.77 </TD> <TD align="right"> 0.66 </TD> <TD align="right"> 0.69 </TD> <TD align="right"> 0.66 </TD> <TD align="right"> -0.34 </TD> <TD align="right"> 0.31 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.70 </TD> <TD align="right"> 0.70 </TD> </TR>
-  <TR> <TD align="right"> publicassistance </TD> <TD align="right"> 0.77 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> -0.26 </TD> <TD align="right"> 0.45 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.67 </TD> <TD align="right"> 0.65 </TD> </TR>
-  <TR> <TD align="right"> poverty </TD> <TD align="right"> 0.66 </TD> <TD align="right"> 0.88 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.73 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> -0.29 </TD> <TD align="right"> 0.56 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.64 </TD> <TD align="right"> 0.62 </TD> </TR>
-  <TR> <TD align="right"> unemployment </TD> <TD align="right"> 0.69 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> 0.73 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.65 </TD> <TD align="right"> -0.14 </TD> <TD align="right"> 0.36 </TD> <TD align="right"> -0.03 </TD> <TD align="right"> 0.54 </TD> <TD align="right"> 0.53 </TD> </TR>
-  <TR> <TD align="right"> owneroccupied </TD> <TD align="right"> 0.66 </TD> <TD align="right"> 0.81 </TD> <TD align="right"> 0.84 </TD> <TD align="right"> 0.65 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> -0.39 </TD> <TD align="right"> 0.49 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.66 </TD> <TD align="right"> 0.64 </TD> </TR>
-  <TR> <TD align="right"> commutetime </TD> <TD align="right"> -0.34 </TD> <TD align="right"> -0.26 </TD> <TD align="right"> -0.29 </TD> <TD align="right"> -0.14 </TD> <TD align="right"> -0.39 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> -0.09 </TD> <TD align="right"> -0.08 </TD> <TD align="right"> -0.37 </TD> <TD align="right"> -0.37 </TD> </TR>
-  <TR> <TD align="right"> vacancy </TD> <TD align="right"> 0.31 </TD> <TD align="right"> 0.45 </TD> <TD align="right"> 0.56 </TD> <TD align="right"> 0.36 </TD> <TD align="right"> 0.49 </TD> <TD align="right"> -0.09 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> -0.02 </TD> <TD align="right"> 0.32 </TD> <TD align="right"> 0.29 </TD> </TR>
-  <TR> <TD align="right"> jobchange </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.02 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> -0.03 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> -0.08 </TD> <TD align="right"> -0.02 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.05 </TD> </TR>
-  <TR> <TD align="right"> Total.Mathematics.Avg.Scale.Score </TD> <TD align="right"> 0.70 </TD> <TD align="right"> 0.67 </TD> <TD align="right"> 0.64 </TD> <TD align="right"> 0.54 </TD> <TD align="right"> 0.66 </TD> <TD align="right"> -0.37 </TD> <TD align="right"> 0.32 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 0.96 </TD> </TR>
-  <TR> <TD align="right"> Total.Reading.Average.Scale.Score </TD> <TD align="right"> 0.70 </TD> <TD align="right"> 0.65 </TD> <TD align="right"> 0.62 </TD> <TD align="right"> 0.53 </TD> <TD align="right"> 0.64 </TD> <TD align="right"> -0.37 </TD> <TD align="right"> 0.29 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.96 </TD> <TD align="right"> 1.00 </TD> </TR>
-   </TABLE>
+
+```
+##                                   college publicassistance poverty
+## college                              1.00             0.77    0.66
+## publicassistance                     0.77             1.00    0.88
+## poverty                              0.66             0.88    1.00
+## unemployment                         0.69             0.81    0.73
+## owneroccupied                        0.66             0.81    0.84
+## commutetime                         -0.34            -0.26   -0.29
+## vacancy                              0.31             0.45    0.56
+## jobchange                            0.05             0.02    0.01
+## Total.Mathematics.Avg.Scale.Score    0.70             0.67    0.64
+## Total.Reading.Average.Scale.Score    0.70             0.65    0.62
+##                                   unemployment owneroccupied commutetime
+## college                                   0.69          0.66       -0.34
+## publicassistance                          0.81          0.81       -0.26
+## poverty                                   0.73          0.84       -0.29
+## unemployment                              1.00          0.65       -0.14
+## owneroccupied                             0.65          1.00       -0.39
+## commutetime                              -0.14         -0.39        1.00
+## vacancy                                   0.36          0.49       -0.09
+## jobchange                                -0.03          0.00       -0.08
+## Total.Mathematics.Avg.Scale.Score         0.54          0.66       -0.37
+## Total.Reading.Average.Scale.Score         0.53          0.64       -0.37
+##                                   vacancy jobchange
+## college                              0.31      0.05
+## publicassistance                     0.45      0.02
+## poverty                              0.56      0.01
+## unemployment                         0.36     -0.03
+## owneroccupied                        0.49      0.00
+## commutetime                         -0.09     -0.08
+## vacancy                              1.00     -0.02
+## jobchange                           -0.02      1.00
+## Total.Mathematics.Avg.Scale.Score    0.32      0.03
+## Total.Reading.Average.Scale.Score    0.29      0.05
+##                                   Total.Mathematics.Avg.Scale.Score
+## college                                                        0.70
+## publicassistance                                               0.67
+## poverty                                                        0.64
+## unemployment                                                   0.54
+## owneroccupied                                                  0.66
+## commutetime                                                   -0.37
+## vacancy                                                        0.32
+## jobchange                                                      0.03
+## Total.Mathematics.Avg.Scale.Score                              1.00
+## Total.Reading.Average.Scale.Score                              0.96
+##                                   Total.Reading.Average.Scale.Score
+## college                                                        0.70
+## publicassistance                                               0.65
+## poverty                                                        0.62
+## unemployment                                                   0.53
+## owneroccupied                                                  0.64
+## commutetime                                                   -0.37
+## vacancy                                                        0.29
+## jobchange                                                      0.05
+## Total.Mathematics.Avg.Scale.Score                              0.96
+## Total.Reading.Average.Scale.Score                              1.00
+```
 
 
 A scatterplot matrix shows the same visually - job growth and (to a lesser extent) commute time have little obvious relationship with the other variables.
@@ -142,16 +201,21 @@ A scatterplot matrix shows the same visually - job growth and (to a lesser exten
 ![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
 
 
-A principal components analysis is another way to look at how each variable impacts the final index. For the index data, the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
+Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Wed May 21 13:49:46 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> PC1 </TH> <TH> PC2 </TH> <TH> PC3 </TH> <TH> PC4 </TH> <TH> PC5 </TH> <TH> PC6 </TH> <TH> PC7 </TH> <TH> PC8 </TH> <TH> PC9 </TH> <TH> PC10 </TH>  </TR>
-  <TR> <TD align="right"> Standard deviation </TD> <TD align="right"> 2.3721 </TD> <TD align="right"> 1.0697 </TD> <TD align="right"> 0.9723 </TD> <TD align="right"> 0.8904 </TD> <TD align="right"> 0.7957 </TD> <TD align="right"> 0.5817 </TD> <TD align="right"> 0.4936 </TD> <TD align="right"> 0.3927 </TD> <TD align="right"> 0.2927 </TD> <TD align="right"> 0.1887 </TD> </TR>
-  <TR> <TD align="right"> Proportion of Variance </TD> <TD align="right"> 0.5627 </TD> <TD align="right"> 0.1144 </TD> <TD align="right"> 0.0945 </TD> <TD align="right"> 0.0793 </TD> <TD align="right"> 0.0633 </TD> <TD align="right"> 0.0338 </TD> <TD align="right"> 0.0244 </TD> <TD align="right"> 0.0154 </TD> <TD align="right"> 0.0086 </TD> <TD align="right"> 0.0036 </TD> </TR>
-  <TR> <TD align="right"> Cumulative Proportion </TD> <TD align="right"> 0.5627 </TD> <TD align="right"> 0.6771 </TD> <TD align="right"> 0.7716 </TD> <TD align="right"> 0.8509 </TD> <TD align="right"> 0.9142 </TD> <TD align="right"> 0.9481 </TD> <TD align="right"> 0.9725 </TD> <TD align="right"> 0.9879 </TD> <TD align="right"> 0.9964 </TD> <TD align="right"> 1.0000 </TD> </TR>
-   </TABLE>
+
+```
+## Importance of components:
+##                          PC1   PC2    PC3    PC4    PC5    PC6    PC7
+## Standard deviation     2.372 1.070 0.9723 0.8904 0.7957 0.5817 0.4936
+## Proportion of Variance 0.563 0.114 0.0945 0.0793 0.0633 0.0338 0.0244
+## Cumulative Proportion  0.563 0.677 0.7716 0.8509 0.9142 0.9481 0.9725
+##                           PC8     PC9    PC10
+## Standard deviation     0.3927 0.29275 0.18870
+## Proportion of Variance 0.0154 0.00857 0.00356
+## Cumulative Proportion  0.9879 0.99644 1.00000
+```
+
 ![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
 
 
@@ -160,9 +224,9 @@ We can look at the weights for each of the variables in the first principal comp
 ![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13.png) 
 
 
-In other words, since much of the variance is explained by the first principal components and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
+In other words: since much of the variance is explained by the first principal component and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
 
-Not surprisingly, many of these variables also have skewed distributions for Connecticut, and hence a more extreme range of z-scores to factor into the overall index.
+Not surprisingly, many of these variables also have very skewed distributions across Connecticut neighborhoods, and hence a more extreme range of z-scores to factor into the overall index.
 
 Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.78 - meaning that the variation in poverty alone explains 78% of the variation in opportunity. 
 

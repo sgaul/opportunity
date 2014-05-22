@@ -29,7 +29,7 @@ To keep each of the variables in the same 'direction' (more homeownership is 'go
 
 Below are summary stats for the census data components of the index:
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, results='asis'}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(ggplot2)
 library(reshape)
 library(acs)
@@ -118,22 +118,23 @@ oppdata$geo= gsub("Census Tract ", "", oppdata$geo)
 oppdata$geo= gsub(", (Fairfield|Hartford|Litchfield|Middlesex|New Haven|New London|Tolland|Windham) County, Connecticut","", oppdata$geo)
 
 library(xtable)
-print(xtable(summary(oppdata[2:8])), type = "html")
+#print(xtable(summary(oppdata[2:8])), type = "html")
+print(summary(oppdata[2:8]))
 ```
 
 The remaining variables - math and reading test scores and economic climate - aren't publicly available at the neighborhood level. 
 
 ### Town data for jobs and test scores
 
-Math and reading scores are reported by the State Department of Education [at the school and district level](http://www.ctreports.com/). Since many children do not attend neighborhood schools, even if data were readily available it may  not accurately represent opportunity in a particular neighborhood. As a proxy, we use the average test scores for the school district of the town. Average test scores take into account the performance of all students, not just those crossing a particular threshold. 
+Math and reading scores are reported by the State Department of Education [at the school and district level](http://www.ctreports.com/). Since many children do not attend neighborhood schools, even if data were readily available it may  not accurately represent opportunity in a particular neighborhood. As a proxy, I used the average test scores for the school district of the town. Average test scores take into account the performance of all students, not just those crossing a particular threshold. The index also does not specify the grade level, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator. 
 
-A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Scores for regional school districts are reported for each town in the region. Cornwall and Union did not have data for any of the past 7 years. (The index also does not specify the grade to use, so I opted to take 3rd grade reading and math scores as a fairly common milestone indicator.)
+A few smaller districts did not have 2013 reports, so the most recent year available was used instead. Cornwall and Union did not have data for any of the past seven years. Scores for regional school districts are reported for each town in the region. 
 
 'Economic climate' was defined for the Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. To get around relying on data from ESRI, I used the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. The data is available by town and is a direct census of employment from wage records. I used 2009 to 2012 as the timeframe, although this does not perfectly match the census data. 
 
 As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) which you can see in the summary stats below.
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 #Load the tract mapping from UConn
 library(reshape)
 mapping <- read.csv('tractstowns2.csv')
@@ -170,14 +171,15 @@ oppdata <- merge(oppdata,
                  all.x = T)
 
 library(xtable)
-print(xtable(summary(oppdata[10:12])), type = "html")
+#print(xtable(summary(oppdata[10:12])), type = "html")
+print(summary(oppdata[10:12]))
 ```
 
 ### Calculating z-scores for the index
 
 The Opportunity Index uses z-scores to scale the variables and calculate the index. This is important because the interpretation of the z-scores depends on how the data are distributed. If data are distributed normally ('bell-curve' style), the z-scores tell us roughly how much of the data is below or above a certain z-score. You can then also compare z-scores for different bell-curve-shaped data sets - the z-scores mean the same thing if the underlying distributions have the same shape. 
 
-The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped though. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
+The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 ggplot(data = melt(oppdata)) + 
@@ -200,7 +202,7 @@ ggplot(data = melt(oppdata)) +
   facet_wrap(~ variable, ncol = 2, scales = "free_y")
 ```
 
-To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and vacancy are less similar. 
+To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 15, fig.width = 12}
 #Merge with data
@@ -223,7 +225,9 @@ ggplot(data = choropleth, aes(long, lat, group = group)) +
   facet_wrap(~ variable, ncol = 2)
 ```
 
-The next step is to calculate the opportunity index from the z-scores of the individual variables. Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. 
+The next step is to calculate the opportunity index as the average of the z-scores of the individual variables. 
+
+Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. The map below shows the updated index for the state using quintiles. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 12}
 #Merge with data
@@ -291,20 +295,21 @@ ggplot(data = oppdata) +
   geom_vline(xintercept = breaks$brks)
 ```
 
-Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the Jenks breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
+Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the natural breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
-### What is driving the Opportunity Index 
+### What is driving the Opportunity Index?
 
 With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that 'indicators with extreme values thus have a greater effect on the composite indicator.' That can be an issue in a state with a high degree of inequality and concentration of poverty. 
 
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 x <- subset(oppdata[3:12], commutetime != "NA" & 
               Total.Mathematics.Avg.Scale.Score != "NA" &
               Total.Reading.Average.Scale.Score != "NA" & 
               jobchange != "NA")
-print(xtable(round(cor(x),2)), type = "html")
+#print(xtable(round(cor(x),2)), type = "html")
+print(round(cor(x),2))
 ```
 
 A scatterplot matrix shows the same visually - job growth and (to a lesser extent) commute time have little obvious relationship with the other variables.
@@ -313,11 +318,11 @@ A scatterplot matrix shows the same visually - job growth and (to a lesser exten
 plot(oppdata[3:12])
 ```
 
-A principal components analysis is another way to look at how each variable impacts the final index. For the index data, the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
+Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 pca1 = prcomp(x, scale. = T)
-print(xtable(summary(pca1)), type = "html")
+print(summary(pca1))
 plot(prcomp(x, scale = T))
 ```
 
@@ -329,9 +334,9 @@ qplot(data = rotation, x = pca1.rotation...1., y = row.names(rotation)) +
   labs(x = "Weight in first principal component", y = NULL)
 ```
 
-In other words, since much of the variance is explained by the first principal components and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
+In other words: since much of the variance is explained by the first principal component and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
 
-Not surprisingly, many of these variables also have skewed distributions for Connecticut, and hence a more extreme range of z-scores to factor into the overall index.
+Not surprisingly, many of these variables also have very skewed distributions across Connecticut neighborhoods, and hence a more extreme range of z-scores to factor into the overall index.
 
 Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.78 - meaning that the variation in poverty alone explains 78% of the variation in opportunity. 
 
