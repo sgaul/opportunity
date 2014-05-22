@@ -26,6 +26,8 @@
         <h2>Opportunity Index</h2>
 <p>If you just want to download the data, you can get it <a href="https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv">here</a>.</p>
 
+<p>If you want more on the index, here you go. </p>
+
 <p>The <a href="http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf">Opportunity Index</a> uses 10 variables; seven of these can be retrieved from the Census Bureau&#39;s American Community Survey:</p>
 
 <ul>
@@ -40,17 +42,11 @@
 
 <h3>Census data for neighborhoods</h3>
 
-<p>For &#39;neighborhood&#39; data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the <a href="http://cran.r-project.org/web/packages/acs/index.html">acs.R package</a> to download census data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.</p>
+<p>For &#39;neighborhood&#39; data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the <a href="http://cran.r-project.org/web/packages/acs/index.html">acs.R package</a> which uses the Census API to download data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.</p>
 
 <p>To keep each of the variables in the same &#39;direction&#39; (more homeownership is &#39;good,&#39; while more poverty is &#39;bad&#39;), I converted the public assistance, poverty, unemployment and vacancy to the inverse percentage (i.e. 1 - rate). For the commute times, I multiplied by (-1) so that longer commute times are lower values. </p>
 
 <p>Below are summary stats for the census data components of the index:</p>
-
-<pre><code>## Error: missing value where TRUE/FALSE needed
-</code></pre>
-
-<pre><code>## Error: missing value where TRUE/FALSE needed
-</code></pre>
 
 <pre><code>##     college      publicassistance    poverty       unemployment  
 ##  Min.   :0.142   Min.   :0.202    Min.   :0.000   Min.   :0.615  

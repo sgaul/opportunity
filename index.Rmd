@@ -14,6 +14,8 @@ markdown    : kramdown
 
 If you just want to download the data, you can get it [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv).
 
+If you want more on the index, here you go. 
+
 The [Opportunity Index](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf) uses 10 variables; seven of these can be retrieved from the Census Bureau's American Community Survey:
 * [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
 * [Unemployment rates](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B23025) (percent in labor force but unemployed)
@@ -25,7 +27,7 @@ The [Opportunity Index](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOp
 
 ### Census data for neighborhoods
 
-For 'neighborhood' data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the [acs.R package](http://cran.r-project.org/web/packages/acs/index.html) to download census data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.
+For 'neighborhood' data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the [acs.R package](http://cran.r-project.org/web/packages/acs/index.html) which uses the Census API to download data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.
 
 To keep each of the variables in the same 'direction' (more homeownership is 'good,' while more poverty is 'bad'), I converted the public assistance, poverty, unemployment and vacancy to the inverse percentage (i.e. 1 - rate). For the commute times, I multiplied by (-1) so that longer commute times are lower values. 
 
@@ -53,7 +55,7 @@ ct.tracts = geo.make(state = "CT", county = "*", tract = "*", check = F)
 #Percent of population on public assistance
 B19058 = acs.fetch(geography = ct.tracts, table.number = "B19058", col.names = "pretty", endyear = 2012)
 
-B19058.rate = divide.acs(numerator=B19058[,2],denominator=B19058[,1], method = "proportion")
+B19058.rate = divide.acs(numerator=B19058[,2],denominator=B19058[,1])
 
 B19058.tract = data.frame(geo=geography(B19058)[[1]],
                               publicassistance= 1 - as.numeric(estimate(B19058.rate)))
@@ -61,7 +63,7 @@ B19058.tract = data.frame(geo=geography(B19058)[[1]],
 #Percent of population with college degree including associate degree
 B23006 = acs.fetch(geography = ct.tracts, table.number = "B23006", col.names = "pretty", endyear = 2012)
 
-B23006.rate = divide.acs(numerator=(B23006[,16]+B23006[,23]),denominator=B23006[,1], method = "proportion")
+B23006.rate = divide.acs(numerator=(B23006[,16]+B23006[,23]),denominator=B23006[,1])
 
 B23006.tract = data.frame(geo=geography(B23006)[[1]],
                               college = as.numeric(estimate(B23006.rate)))
@@ -69,7 +71,7 @@ B23006.tract = data.frame(geo=geography(B23006)[[1]],
 #Neighborhood poverty rate
 B17017 = acs.fetch(geography = ct.tracts, table.number = "B17017", col.names = "pretty", endyear = 2012)
 
-B17017.rate = divide.acs(numerator=B17017[,2], denominator=B17017[,1], method = "proportion")
+B17017.rate = divide.acs(numerator=B17017[,2], denominator=B17017[,1])
 
 B17017.tract = data.frame(geo=geography(B17017)[[1]], 
                      poverty= 1 - as.numeric(estimate(B17017.rate)))
@@ -77,7 +79,7 @@ B17017.tract = data.frame(geo=geography(B17017)[[1]],
 #Unemployment rate
 B23025 = acs.fetch(geography = ct.tracts, table.number = "B23025", col.names = "pretty")
 
-B23025.rate = divide.acs(numerator=B23025[,5],denominator=B23025[,2], method = "proportion")
+B23025.rate = divide.acs(numerator=B23025[,5],denominator=B23025[,2])
 
 B23025.tract = data.frame(geo=geography(B23025)[,1],
                               unemployment= 1 - as.numeric(estimate(B23025.rate)))
@@ -85,7 +87,7 @@ B23025.tract = data.frame(geo=geography(B23025)[,1],
 #Home ownership rate - percent of owner-occupied homes in housing stock
 B25008 = acs.fetch(geography = ct.tracts, table.number = "B25008", col.names = "pretty", endyear = 2012)
 
-B25008.rate = divide.acs(numerator=B25008[,2],denominator=B25008[,1], method = "proportion")
+B25008.rate = divide.acs(numerator=B25008[,2],denominator=B25008[,1])
 
 B25008.tract = data.frame(geo=geography(B25008)[[1]],
                           owneroccupied= as.numeric(estimate(B25008.rate)))
@@ -94,7 +96,7 @@ B25008.tract = data.frame(geo=geography(B25008)[[1]],
 B08013 = acs.fetch(geography = ct.tracts, table.number = "B08013", col.names = "pretty", endyear = 2012)
 B99084 = acs.fetch(geography = ct.tracts, table.number = "B99084", col.names = "pretty", endyear = 2012)
 
-B08013.rate = divide.acs(numerator=B08013[,1],denominator=B99084[,2], method = "proportion")
+B08013.rate = divide.acs(numerator=B08013[,1],denominator=B99084[,2])
 
 B08013.tract = data.frame(geo=geography(B08013)[[1]],
                           commutetime= (-1) * as.numeric(estimate(B08013.rate)))
@@ -102,7 +104,7 @@ B08013.tract = data.frame(geo=geography(B08013)[[1]],
 #Neighborhood vacancy rate
 B25002 = acs.fetch(geography = ct.tracts, table.number = "B25002", col.names = "pretty", endyear = 2012)
 
-B25002.rate = divide.acs(numerator=B25002[,3],denominator=B25002[,1], method = "proportion")
+B25002.rate = divide.acs(numerator=B25002[,3],denominator=B25002[,1])
 
 B25002.tract = data.frame(geo=geography(B25002)[[1]],
                           vacancy= 1 - as.numeric(estimate(B25002.rate)))

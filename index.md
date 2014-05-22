@@ -14,6 +14,8 @@ markdown    : kramdown
 
 If you just want to download the data, you can get it [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv).
 
+If you want more on the index, here you go. 
+
 The [Opportunity Index](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf) uses 10 variables; seven of these can be retrieved from the Census Bureau's American Community Survey:
 * [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
 * [Unemployment rates](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B23025) (percent in labor force but unemployed)
@@ -25,20 +27,12 @@ The [Opportunity Index](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOp
 
 ### Census data for neighborhoods
 
-For 'neighborhood' data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the [acs.R package](http://cran.r-project.org/web/packages/acs/index.html) to download census data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.
+For 'neighborhood' data, the index uses census tracts which restricts the data source to the ACS 5-year estimates. I used the [acs.R package](http://cran.r-project.org/web/packages/acs/index.html) which uses the Census API to download data by tract for the entire state for each of these seven variables. The most recent set of 5-year estimates spans 2008 - 2012, but the script could be updated for different years as new data becomes available.
 
 To keep each of the variables in the same 'direction' (more homeownership is 'good,' while more poverty is 'bad'), I converted the public assistance, poverty, unemployment and vacancy to the inverse percentage (i.e. 1 - rate). For the commute times, I multiplied by (-1) so that longer commute times are lower values. 
 
 Below are summary stats for the census data components of the index:
 
-
-```
-## Error: missing value where TRUE/FALSE needed
-```
-
-```
-## Error: missing value where TRUE/FALSE needed
-```
 
 ```
 ##     college      publicassistance    poverty       unemployment  
