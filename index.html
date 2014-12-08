@@ -79,12 +79,12 @@
 <p>As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (such as Barkhamsted, where employment doubled from 616 to 1145 people over the three years) which you can see in the summary stats below.</p>
 
 <pre><code>##    jobchange      Total.Mathematics.Avg.Scale.Score
-##  Min.   :-0.367   Min.   :212                      
-##  1st Qu.:-0.011   1st Qu.:239                      
-##  Median : 0.013   Median :255                      
-##  Mean   : 0.012   Mean   :254                      
-##  3rd Qu.: 0.034   3rd Qu.:271                      
-##  Max.   : 0.858   Max.   :298                      
+##  Min.   :  3928   Min.   :212                      
+##  1st Qu.: 11162   1st Qu.:239                      
+##  Median : 19149   Median :255                      
+##  Mean   : 23248   Mean   :254                      
+##  3rd Qu.: 29170   3rd Qu.:271                      
+##  Max.   :113840   Max.   :298                      
 ##  NA&#39;s   :6        NA&#39;s   :7                        
 ##  Total.Reading.Average.Scale.Score
 ##  Min.   :208                      
@@ -141,6 +141,9 @@
 <p>With a composite index of z-scores, it helps to see if specific variables are playing more of a role in determining the final index values. The <a href="http://www.oecd.org/std/42495745.pdf">OECD guide to composite indicators</a> notes that using z-scores means that &#39;indicators with extreme values thus have a greater effect on the composite indicator.&#39; That can be an issue in a state with a high degree of inequality and concentration of poverty. </p>
 
 <p>As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. </p>
+
+<pre><code>## Error: object &#39;jobchange&#39; not found
+</code></pre>
 
 <pre><code>##                                   college publicassistance poverty
 ## college                              1.00             0.77    0.66

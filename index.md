@@ -53,7 +53,6 @@ Below are summary stats for the census data components of the index:
 ##  NA's   :7       NA's   :8        NA's   :6
 ```
 
-
 The remaining variables - math and reading test scores and economic climate - aren't publicly available at the neighborhood level. 
 
 ### Town data for jobs and test scores
@@ -69,12 +68,12 @@ As in the prior Opportunity Index, the job change data has some outlier values, 
 
 ```
 ##    jobchange      Total.Mathematics.Avg.Scale.Score
-##  Min.   :-0.367   Min.   :212                      
-##  1st Qu.:-0.011   1st Qu.:239                      
-##  Median : 0.013   Median :255                      
-##  Mean   : 0.012   Mean   :254                      
-##  3rd Qu.: 0.034   3rd Qu.:271                      
-##  Max.   : 0.858   Max.   :298                      
+##  Min.   :  3928   Min.   :212                      
+##  1st Qu.: 11162   1st Qu.:239                      
+##  Median : 19149   Median :255                      
+##  Mean   : 23248   Mean   :254                      
+##  3rd Qu.: 29170   3rd Qu.:271                      
+##  Max.   :113840   Max.   :298                      
 ##  NA's   :6        NA's   :7                        
 ##  Total.Reading.Average.Scale.Score
 ##  Min.   :208                      
@@ -86,7 +85,6 @@ As in the prior Opportunity Index, the job change data has some outlier values, 
 ##  NA's   :8
 ```
 
-
 ### Calculating z-scores for the index
 
 The Opportunity Index uses z-scores to scale the variables and calculate the index. This is important because the interpretation of the z-scores depends on how the data are distributed. If data are distributed normally ('bell-curve' style), the z-scores tell us roughly how much of the data is below or above a certain z-score. You can then also compare z-scores for different bell-curve-shaped data sets - the z-scores mean the same thing if the underlying distributions have the same shape. 
@@ -94,7 +92,6 @@ The Opportunity Index uses z-scores to scale the variables and calculate the ind
 The plots below show the distribution of each of the components of the index for the 833 census tracts in Connecticut. You can see that most are not bell-curve shaped. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
-
 
 If the data are not normally distributed - if, for instance, they are skewed or there are multiple modes in the data - then the z-scores can be harder to interpret. And it's also harder to compare the z-scores across variables - a z-score of 2 for poverty doesn't mean the same thing as a z-score of 2 for commute time if they don't have the same-shaped distribution. 
 
@@ -104,11 +101,9 @@ The charts below show the standardized results for each variable - they report t
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
-
 To see this visually, we can map each of the variables for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. 
 
 ![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
-
 
 The next step is to calculate the opportunity index as the average of the z-scores of the individual variables. 
 
@@ -116,21 +111,17 @@ Even this has some choices involved - the Kirwan Institute mapping uses [quintil
 
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
-
 Another way of coloring the map would be to use [Jenks natural breaks](http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification) method which looks for natural divisions in the data. The map below uses this coloring method for the same data.
 
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
-
 
 This map reflects fewer areas of 'very low' opportunity, but more areas of 'low' and 'moderate' opportunity. Another way to see this is to plot the distribution of the index values for the tracts, including the breakpoints. The chart below shows the breakpoints using the quintiles. (Again, the overall distribution is skewed positive.)
 
 ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
-
 And this chart shows the breakpoints using the natural breaks method. 
 
 ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
-
 
 Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the natural breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
 
@@ -140,6 +131,10 @@ With a composite index of z-scores, it helps to see if specific variables are pl
 
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job growth has almost no correlation with any of the variables. 
 
+
+```
+## Error: object 'jobchange' not found
+```
 
 ```
 ##                                   college publicassistance poverty
@@ -199,11 +194,9 @@ As a start, we know that many of the variables are correlated with each other - 
 ## Total.Reading.Average.Scale.Score                              1.00
 ```
 
-
 A scatterplot matrix shows the same visually - job growth and (to a lesser extent) commute time have little obvious relationship with the other variables.
 
 ![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
-
 
 Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
@@ -222,11 +215,9 @@ Principal components analysis is another way to see the key factors that determi
 
 ![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
 
-
 We can look at the weights for each of the variables in the first principal component in the chart below. This shows that job growth has little influence on the first component (weight close to 0), while commute time offsets some of the other variables (positive weight). Poverty, public assistance and owner-occupied housing have the strongest weights. 
 
 ![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13.png) 
-
 
 In other words: since much of the variance is explained by the first principal component and since poverty, public assistance, owner-occupied housing, educational attainment, test scores and unemployment have the most weight for that component, most of the opportunity index is described by these variables (poverty, public assistance, etc.). 
 
@@ -235,7 +226,6 @@ Not surprisingly, many of these variables also have very skewed distributions ac
 Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.78 - meaning that the variation in poverty alone explains 78% of the variation in opportunity. 
 
 ![plot of chunk unnamed-chunk-14](assets/fig/unnamed-chunk-14.png) 
-
 
 Overall: 
 * We can re-calculate the opportunity index using Census data and state data for towns on test scores and jobs, making some concessions for data availability on the latter variables.

@@ -36,6 +36,7 @@ Below are summary stats for the census data components of the index:
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(ggplot2)
 library(reshape)
+library(plyr)
 library(acs)
 library(maps)
 library(maptools)
@@ -154,10 +155,19 @@ qcew_t <- cast(qcew, Town ~ Year, value = "Annual.Average.Employment")
 names(qcew_t) <- make.names(names(qcew_t))
 qcew_t$jobchange = (qcew_t$X2012 - qcew_t$X2009) / as.numeric(qcew_t$X2009)
 
+#Use the employment access data instead
+#oppdata <- merge(oppdata, 
+#                 qcew_t[c("Town","jobchange")], 
+#                 by.x = "NAME10_1", 
+#                 by.y = "Town", 
+#                 all.x = T)
+
+names(eai) <- c("tract","jobchange")
+
 oppdata <- merge(oppdata, 
-                 qcew_t[c("Town","jobchange")], 
-                 by.x = "NAME10_1", 
-                 by.y = "Town", 
+                 eai, 
+                 by.x = "geo", 
+                 by.y = "tract", 
                  all.x = T)
 
 #Load the test scores data
