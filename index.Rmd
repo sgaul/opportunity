@@ -12,7 +12,7 @@ markdown    : kramdown
 
 ## Opportunity Index
 
-The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv).
+The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv). For more on the use of Opportunity Mapping in Connecticut, see the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut) website.
 
 ### What is opportunity?
 
@@ -29,7 +29,9 @@ Spatial distribution of opportunity is based on indicators categorized under thr
 
 The comprehensive opportunity map represents the combined score based on these three sub-areas. 
 
-The [Opportunity Index](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf) for Connecticut uses 11 variables. Seven of these can be retrieved from the Census Bureau's American Community Survey, the remainder are extracted from national and local public databases: 
+The 2009 Opportunity Index for Connecticut was created by the Kirwan Institute and the CT Fair Housing Center, and was based on 10 variables from public data sources; details can be found in appendix B and C [here](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf).
+
+This updated 2014 Opportunity Index for Connecticut was created by the [CT Open Communities Alliance](http://www.ctoca.org/) and contributors, and is based on 11 variables from similar public data sources, as described below. 
 * [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
 * [Population on public assistance](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19058)
 * [Poverty](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B17017) (percent below poverty line)
@@ -200,19 +202,7 @@ variables <- merge(variables,
                  by.y = "Group", 
                  all.x = T)
 
-#Try to make these into a table for display, not working right w xtable
-library(xtable)
-print(xtable(summary(variables[3:13])), type = "html")
-```
-
-To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of purple highlight areas doing 'better' on that variable. 
-
-```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4, dev ='svg'}
-#Merge shapefiles with raw index data
-library(classInt)
-choropleth=merge(CTTracts, variables, by.x = "id", by.y="geo")
-choropleth=choropleth[order(choropleth$order), ]
-
+#Create a list of all the variable names for pretty tables
 vnames <- c("% adults with college degree",
             "% not receiving public assistance",
             "% not in poverty",
@@ -224,6 +214,24 @@ vnames <- c("% adults with college degree",
             "% change in jobs (2009-12)",
             "3rd grade math, avg. scale scores",
             "3rd grade reading, avg. scale scores")
+
+#Try to make these into a table for display
+library(xtable)
+
+sumtmp <- variables
+colnames(sumtmp)[3:13] <- vnames
+
+print(xtable(summary(sumtmp[3:9])), type = "html", include.rownames = F, size = "small")
+print(xtable(summary(sumtmp[10:13])), type = "html", include.rownames = F, size = "small")
+```
+
+To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of purple highlight areas doing 'better' on that variable. 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4, dev ='svg'}
+#Merge shapefiles with raw index data
+library(classInt)
+choropleth=merge(CTTracts, variables, by.x = "id", by.y="geo")
+choropleth=choropleth[order(choropleth$order), ]
 
 for(i in 3:length(variables)) {
 tmp <- names(variables)
@@ -251,7 +259,7 @@ Another way to see the same patterns is to plot the distribution for the compone
 
 One can see that most variables do not have 'bell-curve' shaped distributions. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
-```{r echo = FALSE, warning = FALSE, fig.height = 4, message = FALSE, dev = 'svg'}
+```{r echo = FALSE, warning = FALSE, fig.height = 3, message = FALSE, dev = 'svg'}
 for(i in 3:length(variables)) {
 tmp <- names(variables)
 
@@ -277,7 +285,7 @@ If the variables have different distributions, then the z-scores will have diffe
 
 The charts below show the standardized results for each variable. The z-scores between -/+2 standard deviations are shown for each variable. Variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables.
 
-```{r echo = FALSE, warning = FALSE, fig.height = 4, message = FALSE, dev = 'svg'}
+```{r echo = FALSE, warning = FALSE, fig.height = 3, message = FALSE, dev = 'svg'}
 oppdata <- variables
 oppdata[3:13] <- scale(oppdata[3:13], center = T, scale = T)
 
@@ -374,7 +382,10 @@ With a composite index, it helps to see if specific variables are playing more o
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job change (economic climate) has almost no correlation with any of the variables. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
-print(xtable(round(cor(oppdata[3:14], use = "na.or.complete"),2)), type = "html")
+sumtmp2 <- oppdata
+colnames(sumtmp2)[3:13] <- vnames
+
+print(xtable(round(cor(sumtmp2[3:13], use = "na.or.complete"),2)), type = "html", size = "small")
 ```
 
 Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
