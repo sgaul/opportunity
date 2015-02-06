@@ -1,6 +1,6 @@
 ---
-title       : Opportunity Index
-subtitle    : Updated Opportunity Index levels for Connecticut
+title       : Connecticut Opportunity Index
+subtitle    : 2014 Opportunity Index levels for Connecticut
 author      : Scott Gaul
 job         : Community Indicators Project
 framework   : minimal        # {io2012, html5slides, shower, dzslides, ...}
@@ -12,13 +12,13 @@ markdown    : kramdown
 
 ## Opportunity Index
 
-The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv). For more on the use of Opportunity Mapping in Connecticut, see the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut) website.
+The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv). For more on the use of Opportunity Mapping in Connecticut, see the websites for the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut), the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/).
 
 ### What is opportunity?
 
-What is opportunity? For this analysis, opportunity is defined as environmental conditions or resources that are conducive to healthier, vibrant communities and are more likely to be conducive to helping residents in a community succeed. Indicators could either be impediments to opportunity (which are analyzed as negative neighborhood factors, e.g., high neighborhood poverty) or conduits to opportunity (which are analyzed as positive factors, e.g., access to an abundance of jobs). 
+For this analysis, opportunity is defined as environmental conditions or resources that are conducive to healthier, vibrant communities and are associated with success in life, defined in a variety of ways. Indicators could either be impediments to opportunity (which are analyzed as negative neighborhood factors, e.g., high neighborhood poverty) or conduits to opportunity (which are analyzed as positive factors, e.g., access to an abundance of jobs). 
 
-To map opportunity in the region, we use variables that are indicative of high and low opportunity. High opportunity indicators include the availability of sustainable employment, high-performing schools, a safe environment, and safe neighborhoods. A central requirement of indicator selection is a clear connection between the indicator and opportunity. 
+To map opportunity in the region, we use variables that are indicative of high and low opportunity. <i>High opportunity</i> indicators include the availability of sustainable employment, high-performing schools, a safe environment, and safe neighborhoods. A central requirement of indicator selection is a clear connection between the indicator and opportunity. 
 
 ## Data Sources
 
@@ -29,20 +29,23 @@ Spatial distribution of opportunity is based on indicators categorized under thr
 
 The comprehensive opportunity map represents the combined score based on these three sub-areas. 
 
-The 2009 Opportunity Index for Connecticut was created by the Kirwan Institute and the CT Fair Housing Center, and was based on 10 variables from public data sources; details can be found in appendix B and C [here](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf).
+The 2009 Opportunity Index for Connecticut was created by the Kirwan Institute working in partnership with the CT Fair Housing Center, and was based on 10 variables from public data sources; details can be found in appendix B and C [here](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf).
 
-This updated 2014 Opportunity Index for Connecticut was created by the [CT Open Communities Alliance](http://www.ctoca.org/) and contributors, and is based on 11 variables from similar public data sources, as described below. 
-* [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
-* [Population on public assistance](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19058)
-* [Poverty](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B17017) (percent below poverty line)
-* [Unemployment rates](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B23025) (percent in labor force but unemployed)
-* [Home ownership rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml)
-* [Vacancy rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B25002) (percent vacant housing)
-* [Economic Climate](http://www1.ctdol.state.ct.us/lmi/)
-* [3rd grade reading test scores](http://www.ctreports.com/)
-* [3rd grade math test scores](http://www.ctreports.com/)
-* [Employment Access](http://www.locationaffordability.info/lai.aspx?url=download.php)
-* [Job Diversity](http://www.locationaffordability.info/lai.aspx?url=download.php)
+This updated 2014 Opportunity Index for Connecticut was created by the [CT Open Communities Alliance](http://www.ctoca.org/) and contributors, and is based on 12 variables from similar public data sources, as described below. 
+* Educational indicators
+  * [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
+  * [3rd grade reading test scores](http://www.ctreports.com/)
+  * [3rd grade math test scores](http://www.ctreports.com/)
+* Economic indicators
+  * [Unemployment rates](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B23025) (percent in labor force but unemployed)
+  * [Economic Climate](http://www1.ctdol.state.ct.us/lmi/)
+  * [Employment Access](http://www.locationaffordability.info/lai.aspx?url=download.php)
+  * [Job Diversity](http://www.locationaffordability.info/lai.aspx?url=download.php)
+  * [Population on public assistance](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19058)
+* Neighborhood / housing quality indicators
+  * [Home ownership rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml)
+  * [Vacancy rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B25002) (percent vacant housing)
+  * [Poverty](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B17017) (percent below poverty line)
 
 ### Census data for neighborhood variables
 
@@ -60,9 +63,9 @@ A few smaller districts do not have 2013 reports for math and reading test score
 
 ### Town data: economic climate
 
-'Economic climate' was defined for the original Opportunity Index as 'the change in jobs within 5 miles from 2005 to 2008,' using data from ESRI Business Analyst. In order to not rely on proprietary data sources, like Business Analyst, this index relies on data from the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. Data from this series is a direct census of employment from wage records reported by town. The index uses 2009 to 2012 as the timeframe, as the msot recent available at the time of this update. 
+"Economic climate" was defined for the original Opportunity Index as "the change in jobs within 5 miles from 2005 to 2008," using data from ESRI Business Analyst. In order to not rely on proprietary data sources, like Business Analyst, this index relies on data from the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. Data from this series is a direct census of employment from wage records reported by town. The index uses 2009 to 2012 as the timeframe, as the most recent available at the time of this update. 
 
-As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (for example, Barkhamsted, where employment doubled from 616 to 1145 people over the three years). These are noticeable in the summary stats reported below, but the effect of this should be minimized when combined with the other index components which are largely uncorrelated with this measure of economic climate.
+As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (for example, Barkhamsted, where employment doubled from 616 to 1145 people over the three years). These are noticeable in the summary stats reported below, but the effect of this should be minimized when combined with the other index components that are largely uncorrelated with this measure of economic climate.
 
 ### Employment Access and Diversity Indices
 The final two variables provide new measures for access to employment and the diversity of local job markets. Data for both of these indices are drawn from the [Location Affordability Index](http://www.locationaffordability.info/) (LAI). LAI values are reported at the block group level for metro areas in Connecticut, but for the Opportunity Index the metro-level results are combined and aggregated at the census tract level in order to combine with the other variables. 
@@ -71,7 +74,7 @@ The methodology for calculating access to employment and jobs diversity is descr
 
 The employment access index replaces the average commute time variable from the [previous Opportunity Mapping effort](http://www.ctfairhousing.org/people-place-and-opportunity-report/) in Connecticut. The jobs access index measures potential access to jobs - indicating opportunity - rather than the actual commute times experienced by currently employed residents. The index is calculated as the number of jobs in a block group, divided by the squared distance to that block group - jobs that are closer to a given neighborhood are thus weighted more highly than jobs that are distant from that neighborhood. 
 
-The jobs diversity index looks at the correlation between 20 major job sectors - areas with higher concentration in a few sectors are reported as having lower diversity. For instance, in Connecticut, parts of Fairield County with a high concentration of employment in finance and insurance are reported with relatively low levels of job diversity. 
+The jobs diversity index looks at the correlation between 20 major job sectors - areas with higher concentration in a few sectors are reported as having lower diversity. For instance, in Connecticut, parts of Fairfield County with a high concentration of employment in finance and insurance are reported with relatively low levels of job diversity. 
 
 ### Results for components of the Opportunity Index
 
@@ -102,7 +105,7 @@ Below are summary stats for the components of the index:
   <tr> <td> NA's   :6   </td> <td> NA's   :6   </td> <td> NA's   :7   </td> <td> NA's   :8   </td> </tr>
    </table>
 
-To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of purple highlight areas doing 'better' on that variable. 
+To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of orange highlight areas doing 'better' on that variable. 
 
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-21.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-22.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-23.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-24.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-25.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-26.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-27.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-28.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-29.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-210.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-211.svg) 
 
@@ -123,7 +126,7 @@ Z-scores are a way to standardize data by reporting how many standard deviations
 
 If the data are not normally distributed - if, for instance, they are skewed or there are multiple modes in the data - then the z-scores can be harder to interpret. And it's also harder to compare the z-scores across variables - a z-score of 2 for poverty doesn't mean the same thing as a z-score of 2 for reading test scores if they don't have the same-shaped distribution. 
 
-This matters since the opportunity index is calculated using the average z-scores across all of the variables. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that 'indicators with extreme values thus have a greater effect on the composite indicator.' That can be an issue in a state with a high degree of inequality and concentration of poverty. 
+This matters since the opportunity index is calculated using the average z-scores across all of the variables. The [OECD guide to composite indicators](http://www.oecd.org/std/42495745.pdf) notes that using z-scores means that "indicators with extreme values thus have a greater effect on the composite indicator." That can be an issue in a state with a high degree of inequality and concentration of poverty. 
 If the variables have different distributions, then the z-scores will have different ranges and the z-scores won't have the same interpretation or influence on the final index values. 
 
 The charts below show the standardized results for each variable. The z-scores between -/+2 standard deviations are shown for each variable. Variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables.
@@ -134,21 +137,13 @@ We can then calculate the opportunity index as the average of the z-scores of th
 
 ![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.svg) 
 
-Even this has some choices involved - the Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. 
+The Kirwan Institute mapping uses [quintiles to color the maps](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf), which means 1/5th of the tracts will fall into each color category. 
 
-Another way of coloring the map would be to use [Jenks natural breaks](http://support.esri.com/en/knowledgebase/GISDictionary/term/natural%20breaks%20classification) method which looks for natural divisions in the data. The map below uses this coloring method for the same data.
+Another way to see this is to plot the distribution of the index values for the tracts, including the breakpoints. The chart below shows the breakpoints using the quintiles. (Again, the overall distribution is skewed positive.)
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.svg) 
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
-Both maps are using the same data, but shaded by different rules. The second map reflects fewer areas of 'very low' opportunity, but more areas of 'low' and 'moderate' opportunity. Another way to see this is to plot the distribution of the index values for the tracts, including the breakpoints. The chart below shows the breakpoints using the quintiles. (Again, the overall distribution is skewed positive.)
-
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
-
-And this chart shows the breakpoints using the natural breaks method. 
-
-![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
-
-Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population), while the natural breaks (or other methods) would reflect the concentration of poverty in a smaller set of areas. 
+Using quintiles means that roughly 20 percent of the population will always live in high opportunity areas (since census tracts have roughly similar population).
 
 ### What is driving the Opportunity Index?
 
@@ -157,7 +152,7 @@ With a composite index, it helps to see if specific variables are playing more o
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job change (economic climate) has almost no correlation with any of the variables. 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 06 07:43:16 2015 -->
+<!-- Fri Feb 06 16:31:17 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> % adults with college degree </th> <th> % not receiving public assistance </th> <th> % not in poverty </th> <th> % employed </th> <th> % living in owner-occupied housing </th> <th> % housing that is not vacant </th> <th> Employment access index </th> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th>  </tr>
   <tr> <td align="right"> % adults with college degree </td> <td align="right"> 1.00 </td> <td align="right"> 0.77 </td> <td align="right"> 0.65 </td> <td align="right"> 0.69 </td> <td align="right"> 0.66 </td> <td align="right"> 0.30 </td> <td align="right"> -0.34 </td> <td align="right"> -0.23 </td> <td align="right"> 0.05 </td> <td align="right"> 0.69 </td> <td align="right"> 0.70 </td> </tr>
@@ -176,23 +171,21 @@ As a start, we know that many of the variables are correlated with each other - 
 Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Jan 30 16:44:32 2015 -->
+<!-- Fri Feb 06 16:31:18 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> PC1 </th> <th> PC2 </th> <th> PC3 </th> <th> PC4 </th> <th> PC5 </th> <th> PC6 </th> <th> PC7 </th> <th> PC8 </th> <th> PC9 </th> <th> PC10 </th> <th> PC11 </th>  </tr>
   <tr> <td align="right"> Standard deviation </td> <td align="right"> 2.4559 </td> <td align="right"> 1.0486 </td> <td align="right"> 0.9840 </td> <td align="right"> 0.9492 </td> <td align="right"> 0.8271 </td> <td align="right"> 0.7456 </td> <td align="right"> 0.5317 </td> <td align="right"> 0.4385 </td> <td align="right"> 0.4030 </td> <td align="right"> 0.2948 </td> <td align="right"> 0.1881 </td> </tr>
   <tr> <td align="right"> Proportion of Variance </td> <td align="right"> 0.5483 </td> <td align="right"> 0.1000 </td> <td align="right"> 0.0880 </td> <td align="right"> 0.0819 </td> <td align="right"> 0.0622 </td> <td align="right"> 0.0505 </td> <td align="right"> 0.0257 </td> <td align="right"> 0.0175 </td> <td align="right"> 0.0148 </td> <td align="right"> 0.0079 </td> <td align="right"> 0.0032 </td> </tr>
   <tr> <td align="right"> Cumulative Proportion </td> <td align="right"> 0.5483 </td> <td align="right"> 0.6483 </td> <td align="right"> 0.7363 </td> <td align="right"> 0.8182 </td> <td align="right"> 0.8804 </td> <td align="right"> 0.9309 </td> <td align="right"> 0.9566 </td> <td align="right"> 0.9741 </td> <td align="right"> 0.9889 </td> <td align="right"> 0.9968 </td> <td align="right"> 1.0000 </td> </tr>
    </table>
-![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
 We can look at the weights for each of the variables in the first principal component in the chart below. This shows that job growth has little influence on the first component (weight close to 0), while job diversity and access to employment offset some of the other variables (positive weight). Poverty, public assistance and owner-occupied housing have the strongest weights. In other words, access to jobs and job diversity are counterbalanced by areas with high poverty and low home-ownership - which roughly matches the patterns in the maps of the index components above. 
 
-![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
-(Not surprisingly, many of the same variables have very skewed distributions across Connecticut neighborhoods, and hence a more extreme range of z-scores to factor into the overall index.)
+Not surprisingly, many of the same variables have very skewed distributions across Connecticut neighborhoods, and hence a more extreme range of z-scores to factor into the overall index.
 
-Another way to look at this is to see how well these variables predict the final index values. For example, poverty alone predicts the overall index pretty well - the R-squared is 0.72 - meaning that the variation in poverty alone explains much of the variation in opportunity. 
 
-![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
 
 
