@@ -12,7 +12,7 @@ markdown    : kramdown
 
 ## Opportunity Index
 
-The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv). For more on the use of Opportunity Mapping in Connecticut, see the websites for the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut), the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/).
+The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/opportunity-index.csv). For more on the use of Opportunity Mapping in Connecticut, see the websites for the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut), the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/).
 
 ### What is opportunity?
 
@@ -44,6 +44,7 @@ This updated 2014 Opportunity Index for Connecticut was created by the [CT Open 
   * [Population on public assistance](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19058)
 * Neighborhood / housing quality indicators
   * [Home ownership rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml)
+  * [Crime rate](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx)
   * [Vacancy rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B25002) (percent vacant housing)
   * [Poverty](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B17017) (percent below poverty line)
 
@@ -61,11 +62,13 @@ Math and reading scores for Connecticut are reported by the State Department of 
 
 A few smaller districts do not have 2013 reports for math and reading test scores, so the most recent year available was used instead. Cornwall and Union did not have data for any of the past seven years and thus don't report values for this variable. Scores for regional school districts were manually assigned to each town in that region, using the assignment [here](www.csde.state.ct.us/public/psis/downloads/RegionalSchoolDistrictsMemberTowns.xls). 
 
-### Town data: economic climate
+### Town data: economic climate and crime
 
 "Economic climate" was defined for the original Opportunity Index as "the change in jobs within 5 miles from 2005 to 2008," using data from ESRI Business Analyst. In order to not rely on proprietary data sources, like Business Analyst, this index relies on data from the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. Data from this series is a direct census of employment from wage records reported by town. The index uses 2009 to 2012 as the timeframe, as the most recent available at the time of this update. 
 
 As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (for example, Barkhamsted, where employment doubled from 616 to 1145 people over the three years). These are noticeable in the summary stats reported below, but the effect of this should be minimized when combined with the other index components that are largely uncorrelated with this measure of economic climate.
+
+Crime rates are reported by local authorities to the [Uniform Crime Reports](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx) database. Rates are calculated as the number of incidents in a town divided by the current population of the town. For this index, the 2010 crime rates are used as the [most recent readily-available](http://ctdata.org/visualization/total-crime) for the state.
 
 ### Employment Access and Diversity Indices
 The final two variables provide new measures for access to employment and the diversity of local job markets. Data for both of these indices are drawn from the [Location Affordability Index](http://www.locationaffordability.info/) (LAI). LAI values are reported at the block group level for metro areas in Connecticut, but for the Opportunity Index the metro-level results are combined and aggregated at the census tract level in order to combine with the other variables. 
@@ -205,6 +208,17 @@ variables <- merge(variables,
                  by.y = "Group", 
                  all.x = T)
 
+#Load crime data, take only 2010 year
+crime <- subset(read.csv('totalcrime.csv'), Year == 2010)
+#Convert crime rates into percentage, take 1 - percent
+crime$inverse.pct = 1 - (crime$Total.crime.Rate / 100000)
+
+variables <- merge(variables, 
+                   crime[c("Town","inverse.pct")],
+                   by.x = "NAME10_1",
+                   by.y = "Town", 
+                   all.x = T)
+
 #Create a list of all the variable names for pretty tables
 vnames <- c("% adults with college degree",
             "% not receiving public assistance",
@@ -216,16 +230,19 @@ vnames <- c("% adults with college degree",
             "Job diversity index",
             "% change in jobs (2009-12)",
             "3rd grade math, avg. scale scores",
-            "3rd grade reading, avg. scale scores")
+            "3rd grade reading, avg. scale scores",
+            "Lack of crime (1 - rate)")
 
 #Try to make these into a table for display
 library(xtable)
 
 sumtmp <- variables
-colnames(sumtmp)[3:13] <- vnames
+colnames(sumtmp)[3:14] <- vnames
 
 print(xtable(summary(sumtmp[3:9])), type = "html", include.rownames = F, size = "small")
-print(xtable(summary(sumtmp[10:13])), type = "html", include.rownames = F, size = "small")
+print(xtable(summary(sumtmp[10:14])), type = "html", include.rownames = F, size = "small")
+
+write.csv(variables, "index-variables.csv", row.names = F)
 ```
 
 To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of orange highlight areas doing 'better' on that variable. 
@@ -290,7 +307,7 @@ The charts below show the standardized results for each variable. The z-scores b
 
 ```{r echo = FALSE, warning = FALSE, fig.height = 3, message = FALSE, dev = 'svg'}
 oppdata <- variables
-oppdata[3:13] <- scale(oppdata[3:13], center = T, scale = T)
+oppdata[3:14] <- scale(oppdata[3:14], center = T, scale = T)
 
 for(i in 3:length(oppdata)) {
 tmp <- names(oppdata)
@@ -308,8 +325,8 @@ We can then calculate the opportunity index as the average of the z-scores of th
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4, dev = 'svg'}
 #Merge with data
-oppdata$index = rowMeans(oppdata[3:12], na.rm = T)
-write.csv(oppdata, "oppdata.csv", row.names = F)
+oppdata$index = rowMeans(oppdata[3:14], na.rm = T)
+write.csv(oppdata, "opportunity-index.csv", row.names = F)
 
 library(classInt)
 choropleth=merge(CTTracts, oppdata[c("geo","index")], 
@@ -351,19 +368,20 @@ With a composite index, it helps to see if specific variables are playing more o
 
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job change (economic climate) has almost no correlation with any of the variables. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+```{r echo = FALSE, warning = F, message = F, results = 'asis'}
 sumtmp2 <- oppdata
-colnames(sumtmp2)[3:13] <- vnames
+colnames(sumtmp2)[3:14] <- vnames
 
-print(xtable(round(cor(sumtmp2[3:13], use = "na.or.complete"),2)), type = "html", size = "small")
+print(xtable(round(cor(sumtmp2[3:14], use = "na.or.complete"),2)), 
+      type = "html", size = "small")
 ```
 
 Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
-pca1 = prcomp(na.omit(oppdata[3:13]), scale. = T)
+pca1 = prcomp(na.omit(oppdata[3:14]), scale. = T)
 print(xtable(summary(pca1)), type = "html")
-plot(prcomp(na.omit(oppdata[3:13]), scale = T), main = "Principal components")
+plot(prcomp(na.omit(oppdata[3:14]), scale = T), main = "Principal components")
 ```
 
 We can look at the weights for each of the variables in the first principal component in the chart below. This shows that job growth has little influence on the first component (weight close to 0), while job diversity and access to employment offset some of the other variables (positive weight). Poverty, public assistance and owner-occupied housing have the strongest weights. In other words, access to jobs and job diversity are counterbalanced by areas with high poverty and low home-ownership - which roughly matches the patterns in the maps of the index components above. 

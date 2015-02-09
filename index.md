@@ -12,7 +12,7 @@ markdown    : kramdown
 
 ## Opportunity Index
 
-The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/oppdata.csv). For more on the use of Opportunity Mapping in Connecticut, see the websites for the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut), the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/).
+The following presents the methodology and indicators for the Connecticut opportunity analysis. To download the data, go [here](https://github.com/sgaul/opportunity/blob/gh-pages/opportunity-index.csv). For more on the use of Opportunity Mapping in Connecticut, see the websites for the [Open Communities Alliance](http://www.ctoca.org/opportunity_in_connecticut), the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/).
 
 ### What is opportunity?
 
@@ -44,6 +44,7 @@ This updated 2014 Opportunity Index for Connecticut was created by the [CT Open 
   * [Population on public assistance](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19058)
 * Neighborhood / housing quality indicators
   * [Home ownership rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml)
+  * [Crime rate](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx)
   * [Vacancy rate](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B25002) (percent vacant housing)
   * [Poverty](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_5YR_B17017) (percent below poverty line)
 
@@ -61,11 +62,13 @@ Math and reading scores for Connecticut are reported by the State Department of 
 
 A few smaller districts do not have 2013 reports for math and reading test scores, so the most recent year available was used instead. Cornwall and Union did not have data for any of the past seven years and thus don't report values for this variable. Scores for regional school districts were manually assigned to each town in that region, using the assignment [here](www.csde.state.ct.us/public/psis/downloads/RegionalSchoolDistrictsMemberTowns.xls). 
 
-### Town data: economic climate
+### Town data: economic climate and crime
 
 "Economic climate" was defined for the original Opportunity Index as "the change in jobs within 5 miles from 2005 to 2008," using data from ESRI Business Analyst. In order to not rely on proprietary data sources, like Business Analyst, this index relies on data from the [Quarterly Census of Earnings and Wages](http://www1.ctdol.state.ct.us/lmi/) series from the Bureau of Labor Statistics. Data from this series is a direct census of employment from wage records reported by town. The index uses 2009 to 2012 as the timeframe, as the most recent available at the time of this update. 
 
 As in the prior Opportunity Index, the job change data has some outlier values, particularly for small towns (for example, Barkhamsted, where employment doubled from 616 to 1145 people over the three years). These are noticeable in the summary stats reported below, but the effect of this should be minimized when combined with the other index components that are largely uncorrelated with this measure of economic climate.
+
+Crime rates are reported by local authorities to the [Uniform Crime Reports](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx) database. Rates are calculated as the number of incidents in a town divided by the current population of the town. For this index, the 2010 crime rates are used as the [most recent readily-available](http://ctdata.org/visualization/total-crime) for the state.
 
 ### Employment Access and Diversity Indices
 The final two variables provide new measures for access to employment and the diversity of local job markets. Data for both of these indices are drawn from the [Location Affordability Index](http://www.locationaffordability.info/) (LAI). LAI values are reported at the block group level for metro areas in Connecticut, but for the Opportunity Index the metro-level results are combined and aggregated at the census tract level in order to combine with the other variables. 
@@ -81,7 +84,7 @@ The jobs diversity index looks at the correlation between 20 major job sectors -
 Below are summary stats for the components of the index:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 06 07:41:44 2015 -->
+<!-- Mon Feb 09 14:42:52 2015 -->
 <table border=1>
 <tr> <th> % adults with college degree </th> <th> % not receiving public assistance </th> <th> % not in poverty </th> <th>   % employed </th> <th> % living in owner-occupied housing </th> <th> % housing that is not vacant </th> <th> Employment access index </th>  </tr>
   <tr> <td> Min.   :0.142   </td> <td> Min.   :0.202   </td> <td> Min.   :0.000   </td> <td> Min.   :0.615   </td> <td> Min.   :0.000   </td> <td> Min.   :0.000   </td> <td> Min.   :  3928   </td> </tr>
@@ -93,21 +96,25 @@ Below are summary stats for the components of the index:
   <tr> <td> NA's   :6   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :7   </td> <td> NA's   :6   </td> </tr>
    </table>
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 06 07:41:44 2015 -->
+<!-- Mon Feb 09 14:42:52 2015 -->
 <table border=1>
-<tr> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th>  </tr>
-  <tr> <td> Min.   :1719   </td> <td> Min.   :-0.367   </td> <td> Min.   :212   </td> <td> Min.   :208   </td> </tr>
-  <tr> <td> 1st Qu.:2219   </td> <td> 1st Qu.:-0.011   </td> <td> 1st Qu.:239   </td> <td> 1st Qu.:228   </td> </tr>
-  <tr> <td> Median :2349   </td> <td> Median : 0.013   </td> <td> Median :255   </td> <td> Median :240   </td> </tr>
-  <tr> <td> Mean   :2468   </td> <td> Mean   : 0.012   </td> <td> Mean   :254   </td> <td> Mean   :241   </td> </tr>
-  <tr> <td> 3rd Qu.:2567   </td> <td> 3rd Qu.: 0.034   </td> <td> 3rd Qu.:271   </td> <td> 3rd Qu.:257   </td> </tr>
-  <tr> <td> Max.   :5053   </td> <td> Max.   : 0.858   </td> <td> Max.   :298   </td> <td> Max.   :279   </td> </tr>
-  <tr> <td> NA's   :6   </td> <td> NA's   :6   </td> <td> NA's   :7   </td> <td> NA's   :8   </td> </tr>
+<tr> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th> <th> Lack of crime (1 - rate) </th>  </tr>
+  <tr> <td> Min.   :1719   </td> <td> Min.   :-0.367   </td> <td> Min.   :212   </td> <td> Min.   :208   </td> <td> Min.   :0.929   </td> </tr>
+  <tr> <td> 1st Qu.:2219   </td> <td> 1st Qu.:-0.011   </td> <td> 1st Qu.:239   </td> <td> 1st Qu.:228   </td> <td> 1st Qu.:0.967   </td> </tr>
+  <tr> <td> Median :2349   </td> <td> Median : 0.013   </td> <td> Median :255   </td> <td> Median :240   </td> <td> Median :0.979   </td> </tr>
+  <tr> <td> Mean   :2468   </td> <td> Mean   : 0.012   </td> <td> Mean   :254   </td> <td> Mean   :241   </td> <td> Mean   :0.975   </td> </tr>
+  <tr> <td> 3rd Qu.:2567   </td> <td> 3rd Qu.: 0.034   </td> <td> 3rd Qu.:271   </td> <td> 3rd Qu.:257   </td> <td> 3rd Qu.:0.988   </td> </tr>
+  <tr> <td> Max.   :5053   </td> <td> Max.   : 0.858   </td> <td> Max.   :298   </td> <td> Max.   :279   </td> <td> Max.   :0.996   </td> </tr>
+  <tr> <td> NA's   :6   </td> <td> NA's   :6   </td> <td> NA's   :7   </td> <td> NA's   :8   </td> <td> NA's   :5   </td> </tr>
    </table>
+
+```
+## Error: cannot open the connection
+```
 
 To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of orange highlight areas doing 'better' on that variable. 
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-21.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-22.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-23.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-24.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-25.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-26.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-27.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-28.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-29.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-210.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-211.svg) 
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-21.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-22.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-23.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-24.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-25.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-26.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-27.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-28.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-29.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-210.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-211.svg) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-212.svg) 
 
 The patterns in each map correspond to the distribution of values for these indicators across the state. 
 
@@ -115,7 +122,7 @@ Another way to see the same patterns is to plot the distribution for the compone
 
 One can see that most variables do not have 'bell-curve' shaped distributions. Rather, several are skewed, which reflects the general concentration of poverty, public assistance and related variables in a small set of neighborhoods within the state. 
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-31.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-32.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-33.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-34.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-35.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-36.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-37.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-38.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-39.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-310.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-311.svg) 
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-31.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-32.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-33.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-34.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-35.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-36.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-37.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-38.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-39.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-310.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-311.svg) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-312.svg) 
 
 ## Methodology
 ### Calculating z-scores for the index
@@ -131,7 +138,7 @@ If the variables have different distributions, then the z-scores will have diffe
 
 The charts below show the standardized results for each variable. The z-scores between -/+2 standard deviations are shown for each variable. Variables like poverty, public assistance, unemployment tend to have similar shapes and are skewed positive - there are many above-average tracts, but a long tail of tracts with below-average scores on these variables.
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-41.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-42.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-43.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-44.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-45.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-46.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-47.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-48.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-49.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-410.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-411.svg) 
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-41.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-42.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-43.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-44.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-45.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-46.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-47.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-48.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-49.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-410.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-411.svg) ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-412.svg) 
 
 We can then calculate the opportunity index as the average of the z-scores of the individual variables. The map below shows the updated index for the state. 
 
@@ -152,31 +159,32 @@ With a composite index, it helps to see if specific variables are playing more o
 As a start, we know that many of the variables are correlated with each other - the correlation matrix below shows that several of the variables - poverty, public assistance, etc. - are correlated with each other. Job change (economic climate) has almost no correlation with any of the variables. 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 06 16:31:17 2015 -->
+<!-- Mon Feb 09 14:54:58 2015 -->
 <table border=1>
-<tr> <th>  </th> <th> % adults with college degree </th> <th> % not receiving public assistance </th> <th> % not in poverty </th> <th> % employed </th> <th> % living in owner-occupied housing </th> <th> % housing that is not vacant </th> <th> Employment access index </th> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th>  </tr>
-  <tr> <td align="right"> % adults with college degree </td> <td align="right"> 1.00 </td> <td align="right"> 0.77 </td> <td align="right"> 0.65 </td> <td align="right"> 0.69 </td> <td align="right"> 0.66 </td> <td align="right"> 0.30 </td> <td align="right"> -0.34 </td> <td align="right"> -0.23 </td> <td align="right"> 0.05 </td> <td align="right"> 0.69 </td> <td align="right"> 0.70 </td> </tr>
-  <tr> <td align="right"> % not receiving public assistance </td> <td align="right"> 0.77 </td> <td align="right"> 1.00 </td> <td align="right"> 0.88 </td> <td align="right"> 0.80 </td> <td align="right"> 0.81 </td> <td align="right"> 0.45 </td> <td align="right"> -0.60 </td> <td align="right"> -0.29 </td> <td align="right"> 0.02 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> </tr>
-  <tr> <td align="right"> % not in poverty </td> <td align="right"> 0.65 </td> <td align="right"> 0.88 </td> <td align="right"> 1.00 </td> <td align="right"> 0.73 </td> <td align="right"> 0.84 </td> <td align="right"> 0.56 </td> <td align="right"> -0.63 </td> <td align="right"> -0.35 </td> <td align="right"> 0.02 </td> <td align="right"> 0.64 </td> <td align="right"> 0.62 </td> </tr>
-  <tr> <td align="right"> % employed </td> <td align="right"> 0.69 </td> <td align="right"> 0.80 </td> <td align="right"> 0.73 </td> <td align="right"> 1.00 </td> <td align="right"> 0.66 </td> <td align="right"> 0.35 </td> <td align="right"> -0.52 </td> <td align="right"> -0.20 </td> <td align="right"> -0.03 </td> <td align="right"> 0.54 </td> <td align="right"> 0.53 </td> </tr>
-  <tr> <td align="right"> % living in owner-occupied housing </td> <td align="right"> 0.66 </td> <td align="right"> 0.81 </td> <td align="right"> 0.84 </td> <td align="right"> 0.66 </td> <td align="right"> 1.00 </td> <td align="right"> 0.49 </td> <td align="right"> -0.65 </td> <td align="right"> -0.35 </td> <td align="right"> -0.00 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> </tr>
-  <tr> <td align="right"> % housing that is not vacant </td> <td align="right"> 0.30 </td> <td align="right"> 0.45 </td> <td align="right"> 0.56 </td> <td align="right"> 0.35 </td> <td align="right"> 0.49 </td> <td align="right"> 1.00 </td> <td align="right"> -0.24 </td> <td align="right"> -0.27 </td> <td align="right"> -0.02 </td> <td align="right"> 0.32 </td> <td align="right"> 0.29 </td> </tr>
-  <tr> <td align="right"> Employment access index </td> <td align="right"> -0.34 </td> <td align="right"> -0.60 </td> <td align="right"> -0.63 </td> <td align="right"> -0.52 </td> <td align="right"> -0.65 </td> <td align="right"> -0.24 </td> <td align="right"> 1.00 </td> <td align="right"> 0.15 </td> <td align="right"> 0.09 </td> <td align="right"> -0.48 </td> <td align="right"> -0.46 </td> </tr>
-  <tr> <td align="right"> Job diversity index </td> <td align="right"> -0.23 </td> <td align="right"> -0.29 </td> <td align="right"> -0.35 </td> <td align="right"> -0.20 </td> <td align="right"> -0.35 </td> <td align="right"> -0.27 </td> <td align="right"> 0.15 </td> <td align="right"> 1.00 </td> <td align="right"> -0.05 </td> <td align="right"> -0.37 </td> <td align="right"> -0.36 </td> </tr>
-  <tr> <td align="right"> % change in jobs (2009-12) </td> <td align="right"> 0.05 </td> <td align="right"> 0.02 </td> <td align="right"> 0.02 </td> <td align="right"> -0.03 </td> <td align="right"> -0.00 </td> <td align="right"> -0.02 </td> <td align="right"> 0.09 </td> <td align="right"> -0.05 </td> <td align="right"> 1.00 </td> <td align="right"> 0.03 </td> <td align="right"> 0.05 </td> </tr>
-  <tr> <td align="right"> 3rd grade math, avg. scale scores </td> <td align="right"> 0.69 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> <td align="right"> 0.54 </td> <td align="right"> 0.66 </td> <td align="right"> 0.32 </td> <td align="right"> -0.48 </td> <td align="right"> -0.37 </td> <td align="right"> 0.03 </td> <td align="right"> 1.00 </td> <td align="right"> 0.96 </td> </tr>
-  <tr> <td align="right"> 3rd grade reading, avg. scale scores </td> <td align="right"> 0.70 </td> <td align="right"> 0.64 </td> <td align="right"> 0.62 </td> <td align="right"> 0.53 </td> <td align="right"> 0.64 </td> <td align="right"> 0.29 </td> <td align="right"> -0.46 </td> <td align="right"> -0.36 </td> <td align="right"> 0.05 </td> <td align="right"> 0.96 </td> <td align="right"> 1.00 </td> </tr>
+<tr> <th>  </th> <th> % adults with college degree </th> <th> % not receiving public assistance </th> <th> % not in poverty </th> <th> % employed </th> <th> % living in owner-occupied housing </th> <th> % housing that is not vacant </th> <th> Employment access index </th> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th> <th> Lack of crime (1 - rate) </th>  </tr>
+  <tr> <td align="right"> % adults with college degree </td> <td align="right"> 1.00 </td> <td align="right"> 0.77 </td> <td align="right"> 0.65 </td> <td align="right"> 0.69 </td> <td align="right"> 0.66 </td> <td align="right"> 0.30 </td> <td align="right"> -0.34 </td> <td align="right"> -0.23 </td> <td align="right"> 0.05 </td> <td align="right"> 0.69 </td> <td align="right"> 0.70 </td> <td align="right"> 0.53 </td> </tr>
+  <tr> <td align="right"> % not receiving public assistance </td> <td align="right"> 0.77 </td> <td align="right"> 1.00 </td> <td align="right"> 0.88 </td> <td align="right"> 0.80 </td> <td align="right"> 0.81 </td> <td align="right"> 0.45 </td> <td align="right"> -0.60 </td> <td align="right"> -0.29 </td> <td align="right"> 0.02 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> <td align="right"> 0.67 </td> </tr>
+  <tr> <td align="right"> % not in poverty </td> <td align="right"> 0.65 </td> <td align="right"> 0.88 </td> <td align="right"> 1.00 </td> <td align="right"> 0.73 </td> <td align="right"> 0.84 </td> <td align="right"> 0.56 </td> <td align="right"> -0.63 </td> <td align="right"> -0.35 </td> <td align="right"> 0.02 </td> <td align="right"> 0.64 </td> <td align="right"> 0.62 </td> <td align="right"> 0.65 </td> </tr>
+  <tr> <td align="right"> % employed </td> <td align="right"> 0.69 </td> <td align="right"> 0.80 </td> <td align="right"> 0.73 </td> <td align="right"> 1.00 </td> <td align="right"> 0.66 </td> <td align="right"> 0.35 </td> <td align="right"> -0.52 </td> <td align="right"> -0.20 </td> <td align="right"> -0.03 </td> <td align="right"> 0.54 </td> <td align="right"> 0.53 </td> <td align="right"> 0.54 </td> </tr>
+  <tr> <td align="right"> % living in owner-occupied housing </td> <td align="right"> 0.66 </td> <td align="right"> 0.81 </td> <td align="right"> 0.84 </td> <td align="right"> 0.66 </td> <td align="right"> 1.00 </td> <td align="right"> 0.49 </td> <td align="right"> -0.65 </td> <td align="right"> -0.35 </td> <td align="right"> -0.00 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> <td align="right"> 0.64 </td> </tr>
+  <tr> <td align="right"> % housing that is not vacant </td> <td align="right"> 0.30 </td> <td align="right"> 0.45 </td> <td align="right"> 0.56 </td> <td align="right"> 0.35 </td> <td align="right"> 0.49 </td> <td align="right"> 1.00 </td> <td align="right"> -0.24 </td> <td align="right"> -0.27 </td> <td align="right"> -0.02 </td> <td align="right"> 0.32 </td> <td align="right"> 0.29 </td> <td align="right"> 0.29 </td> </tr>
+  <tr> <td align="right"> Employment access index </td> <td align="right"> -0.34 </td> <td align="right"> -0.60 </td> <td align="right"> -0.63 </td> <td align="right"> -0.52 </td> <td align="right"> -0.65 </td> <td align="right"> -0.24 </td> <td align="right"> 1.00 </td> <td align="right"> 0.15 </td> <td align="right"> 0.09 </td> <td align="right"> -0.48 </td> <td align="right"> -0.46 </td> <td align="right"> -0.67 </td> </tr>
+  <tr> <td align="right"> Job diversity index </td> <td align="right"> -0.23 </td> <td align="right"> -0.29 </td> <td align="right"> -0.35 </td> <td align="right"> -0.20 </td> <td align="right"> -0.35 </td> <td align="right"> -0.27 </td> <td align="right"> 0.15 </td> <td align="right"> 1.00 </td> <td align="right"> -0.05 </td> <td align="right"> -0.37 </td> <td align="right"> -0.36 </td> <td align="right"> -0.41 </td> </tr>
+  <tr> <td align="right"> % change in jobs (2009-12) </td> <td align="right"> 0.05 </td> <td align="right"> 0.02 </td> <td align="right"> 0.02 </td> <td align="right"> -0.03 </td> <td align="right"> -0.00 </td> <td align="right"> -0.02 </td> <td align="right"> 0.09 </td> <td align="right"> -0.05 </td> <td align="right"> 1.00 </td> <td align="right"> 0.03 </td> <td align="right"> 0.05 </td> <td align="right"> 0.00 </td> </tr>
+  <tr> <td align="right"> 3rd grade math, avg. scale scores </td> <td align="right"> 0.69 </td> <td align="right"> 0.66 </td> <td align="right"> 0.64 </td> <td align="right"> 0.54 </td> <td align="right"> 0.66 </td> <td align="right"> 0.32 </td> <td align="right"> -0.48 </td> <td align="right"> -0.37 </td> <td align="right"> 0.03 </td> <td align="right"> 1.00 </td> <td align="right"> 0.96 </td> <td align="right"> 0.77 </td> </tr>
+  <tr> <td align="right"> 3rd grade reading, avg. scale scores </td> <td align="right"> 0.70 </td> <td align="right"> 0.64 </td> <td align="right"> 0.62 </td> <td align="right"> 0.53 </td> <td align="right"> 0.64 </td> <td align="right"> 0.29 </td> <td align="right"> -0.46 </td> <td align="right"> -0.36 </td> <td align="right"> 0.05 </td> <td align="right"> 0.96 </td> <td align="right"> 1.00 </td> <td align="right"> 0.76 </td> </tr>
+  <tr> <td align="right"> Lack of crime (1 - rate) </td> <td align="right"> 0.53 </td> <td align="right"> 0.67 </td> <td align="right"> 0.65 </td> <td align="right"> 0.54 </td> <td align="right"> 0.64 </td> <td align="right"> 0.29 </td> <td align="right"> -0.67 </td> <td align="right"> -0.41 </td> <td align="right"> 0.00 </td> <td align="right"> 0.77 </td> <td align="right"> 0.76 </td> <td align="right"> 1.00 </td> </tr>
    </table>
 
 Principal components analysis is another way to see the key factors that determine the final index. A principal components analysis of the index data shows that the first principal component dominates the results - explaining 56 percent of the overall variance in the data (first bar in the graph, first column in the table). 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 06 16:31:18 2015 -->
+<!-- Mon Feb 09 15:02:12 2015 -->
 <table border=1>
-<tr> <th>  </th> <th> PC1 </th> <th> PC2 </th> <th> PC3 </th> <th> PC4 </th> <th> PC5 </th> <th> PC6 </th> <th> PC7 </th> <th> PC8 </th> <th> PC9 </th> <th> PC10 </th> <th> PC11 </th>  </tr>
-  <tr> <td align="right"> Standard deviation </td> <td align="right"> 2.4559 </td> <td align="right"> 1.0486 </td> <td align="right"> 0.9840 </td> <td align="right"> 0.9492 </td> <td align="right"> 0.8271 </td> <td align="right"> 0.7456 </td> <td align="right"> 0.5317 </td> <td align="right"> 0.4385 </td> <td align="right"> 0.4030 </td> <td align="right"> 0.2948 </td> <td align="right"> 0.1881 </td> </tr>
-  <tr> <td align="right"> Proportion of Variance </td> <td align="right"> 0.5483 </td> <td align="right"> 0.1000 </td> <td align="right"> 0.0880 </td> <td align="right"> 0.0819 </td> <td align="right"> 0.0622 </td> <td align="right"> 0.0505 </td> <td align="right"> 0.0257 </td> <td align="right"> 0.0175 </td> <td align="right"> 0.0148 </td> <td align="right"> 0.0079 </td> <td align="right"> 0.0032 </td> </tr>
-  <tr> <td align="right"> Cumulative Proportion </td> <td align="right"> 0.5483 </td> <td align="right"> 0.6483 </td> <td align="right"> 0.7363 </td> <td align="right"> 0.8182 </td> <td align="right"> 0.8804 </td> <td align="right"> 0.9309 </td> <td align="right"> 0.9566 </td> <td align="right"> 0.9741 </td> <td align="right"> 0.9889 </td> <td align="right"> 0.9968 </td> <td align="right"> 1.0000 </td> </tr>
+<tr> <th>  </th> <th> PC1 </th> <th> PC2 </th> <th> PC3 </th> <th> PC4 </th> <th> PC5 </th> <th> PC6 </th> <th> PC7 </th> <th> PC8 </th> <th> PC9 </th> <th> PC10 </th> <th> PC11 </th> <th> PC12 </th>  </tr>
+  <tr> <td align="right"> Standard deviation </td> <td align="right"> 2.5833 </td> <td align="right"> 1.0526 </td> <td align="right"> 0.9919 </td> <td align="right"> 0.9760 </td> <td align="right"> 0.8644 </td> <td align="right"> 0.7534 </td> <td align="right"> 0.5534 </td> <td align="right"> 0.4528 </td> <td align="right"> 0.4384 </td> <td align="right"> 0.3793 </td> <td align="right"> 0.2920 </td> <td align="right"> 0.1875 </td> </tr>
+  <tr> <td align="right"> Proportion of Variance </td> <td align="right"> 0.5561 </td> <td align="right"> 0.0923 </td> <td align="right"> 0.0820 </td> <td align="right"> 0.0794 </td> <td align="right"> 0.0623 </td> <td align="right"> 0.0473 </td> <td align="right"> 0.0255 </td> <td align="right"> 0.0171 </td> <td align="right"> 0.0160 </td> <td align="right"> 0.0120 </td> <td align="right"> 0.0071 </td> <td align="right"> 0.0029 </td> </tr>
+  <tr> <td align="right"> Cumulative Proportion </td> <td align="right"> 0.5561 </td> <td align="right"> 0.6484 </td> <td align="right"> 0.7304 </td> <td align="right"> 0.8098 </td> <td align="right"> 0.8721 </td> <td align="right"> 0.9194 </td> <td align="right"> 0.9449 </td> <td align="right"> 0.9620 </td> <td align="right"> 0.9780 </td> <td align="right"> 0.9900 </td> <td align="right"> 0.9971 </td> <td align="right"> 1.0000 </td> </tr>
    </table>
 ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
