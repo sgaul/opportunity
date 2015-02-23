@@ -1,6 +1,6 @@
 ---
 title       : Connecticut Opportunity Index
-subtitle    : 2014 Opportunity Index levels for Connecticut
+subtitle    : 2015 Opportunity Index levels for Connecticut
 author      : Scott Gaul
 job         : Community Indicators Project
 framework   : minimal        # {io2012, html5slides, shower, dzslides, ...}
