@@ -242,7 +242,7 @@ colnames(sumtmp)[3:14] <- vnames
 print(xtable(summary(sumtmp[3:9])), type = "html", include.rownames = F, size = "small")
 print(xtable(summary(sumtmp[10:14])), type = "html", include.rownames = F, size = "small")
 
-write.csv(variables, "index-variables.csv", row.names = F)
+#write.csv(variables, "index-variables.csv", row.names = F)
 ```
 
 To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of orange highlight areas doing 'better' on that variable. 

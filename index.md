@@ -84,7 +84,7 @@ The jobs diversity index looks at the correlation between 20 major job sectors -
 Below are summary stats for the components of the index:
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 09 14:42:52 2015 -->
+<!-- Mon Feb 23 09:37:31 2015 -->
 <table border=1>
 <tr> <th> % adults with college degree </th> <th> % not receiving public assistance </th> <th> % not in poverty </th> <th>   % employed </th> <th> % living in owner-occupied housing </th> <th> % housing that is not vacant </th> <th> Employment access index </th>  </tr>
   <tr> <td> Min.   :0.142   </td> <td> Min.   :0.202   </td> <td> Min.   :0.000   </td> <td> Min.   :0.615   </td> <td> Min.   :0.000   </td> <td> Min.   :0.000   </td> <td> Min.   :  3928   </td> </tr>
@@ -96,7 +96,7 @@ Below are summary stats for the components of the index:
   <tr> <td> NA's   :6   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :8   </td> <td> NA's   :7   </td> <td> NA's   :6   </td> </tr>
    </table>
 <!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 09 14:42:52 2015 -->
+<!-- Mon Feb 23 09:37:31 2015 -->
 <table border=1>
 <tr> <th> Job diversity index </th> <th> % change in jobs (2009-12) </th> <th> 3rd grade math, avg. scale scores </th> <th> 3rd grade reading, avg. scale scores </th> <th> Lack of crime (1 - rate) </th>  </tr>
   <tr> <td> Min.   :1719   </td> <td> Min.   :-0.367   </td> <td> Min.   :212   </td> <td> Min.   :208   </td> <td> Min.   :0.929   </td> </tr>
@@ -107,10 +107,6 @@ Below are summary stats for the components of the index:
   <tr> <td> Max.   :5053   </td> <td> Max.   : 0.858   </td> <td> Max.   :298   </td> <td> Max.   :279   </td> <td> Max.   :0.996   </td> </tr>
   <tr> <td> NA's   :6   </td> <td> NA's   :6   </td> <td> NA's   :7   </td> <td> NA's   :8   </td> <td> NA's   :5   </td> </tr>
    </table>
-
-```
-## Error: cannot open the connection
-```
 
 To visualize the results for each of the variables, we can map each for the state. Several variables - like poverty, public assistance, unemployment - show similar patterns across tracts, while job growth and commute times are less similar. In each case, the darker shades of orange highlight areas doing 'better' on that variable. 
 
