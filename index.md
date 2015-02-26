@@ -29,9 +29,9 @@ Spatial distribution of opportunity is based on indicators categorized under thr
 
 The comprehensive opportunity map represents the combined score based on these three sub-areas. 
 
-The 2009 Opportunity Index for Connecticut was created by the Kirwan Institute working in partnership with the CT Fair Housing Center, and was based on 10 variables from public data sources; details can be found in appendix B and C [here](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf).
+The 2009 Opportunity Index for Connecticut was created by the Kirwan Institute working in partnership with the CT Fair Housing Center, and was based on 11 variables from public data sources; details can be found in appendix B and C [here](http://kirwaninstitute.osu.edu/reports/2009/11_2009_CTOppMapping_FullReport.pdf).
 
-This updated 2014 Opportunity Index for Connecticut was created by the [CT Open Communities Alliance](http://www.ctoca.org/) and contributors, and is based on 12 variables from similar public data sources, as described below. 
+This updated 2014 Opportunity Index for Connecticut was created by the [CT Open Communities Alliance](http://www.ctoca.org/) and contributors as a joint project with the [Kirwan Institute](http://kirwaninstitute.osu.edu/) and the [Connecticut Fair Housing Center](http://www.ctfairhousing.org/), and is based on 12 variables from similar public data sources, as described below.
 * Educational indicators
   * [Educational attainment for the population](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23006) (college and associates degrees)
   * [3rd grade reading test scores](http://www.ctreports.com/)
